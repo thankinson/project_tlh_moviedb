@@ -1,20 +1,21 @@
+import { useState } from "react";
 import Header from "./pages/Header";
-import Landing from "./pages/Landing";
+import  { Landing } from "./pages/Landing"
 import Footer from "./pages/Footer";
 import styled from "styled-components";
 import './globalStyles/global.css';
 
 const App = () => {
-  
- return (
-    <Body>
-        <Header />
-        <Landing />
-        <Footer />
-    </Body>
+    const [user, setUser] = useState();
+    return (
+        <Body>
+            <Header />
+            <Landing user={user} setuser={setUser}  />
+            <Footer />
+        </Body>
 
 );
- 
+
 };
 
 // ##########################################################
