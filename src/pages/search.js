@@ -15,7 +15,7 @@ export const SearchApi = () =>{
                 console.log(errorLog)
             }
         }
-        console.log(movie)
+        
 
         const submitHandler = (e) => {
             e.preventDefault();
@@ -30,7 +30,7 @@ export const SearchApi = () =>{
                 <button>Search DB</button>
             </form>}
             <div>
-                
+            {movie && <h1>{movie.original_title}</h1>}
             </div>
         </div>
         </>
