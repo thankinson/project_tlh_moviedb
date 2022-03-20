@@ -5,7 +5,7 @@ import "../globalStyles/global.css"
 const { REACT_APP_API_KEY } = process.env
 
 export const SearchApi = () =>{
-    const [movie, setMovie ] = useState()
+    const [movie, setMovie ] = useState([])
     const [search, setSearch] = useState()
     
     const MovieApi = async () =>{
@@ -36,7 +36,9 @@ export const SearchApi = () =>{
                         <DivCollapse>
                             <Collapsible trigger={movie[index].original_title}>
                                 <DivContent>
-                                    <DivPoster><ImgPoster src={`https://image.tmdb.org/t/p/w500${movie[index].poster_path}`} /></DivPoster>
+                                    <DivPoster>
+                                        <ImgPoster src={`https://image.tmdb.org/t/p/w500${movie[index].poster_path}`} alt={`${movie[index].original_title} Poster`} />
+                                    </DivPoster>
                                     <DivInformation>
                                     <p>Movie ID: {movie[index].id}</p>
                                     <p>Released: {movie[index].release_date}</p>
@@ -61,7 +63,7 @@ export const SearchApi = () =>{
 
 const DivSearch = styled.div`
     width: 100vw;
-    height: 95vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     /* border: solid 1px green; */
@@ -96,27 +98,32 @@ const ButtonSearch = styled.button`
 const DivResults = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 100vw;
     /* border: solid 1px red; */
 `
 const DivCollapse = styled.div`
     display: flex;
     flex-direction: row;
-    width: 100vw;
+    width: 50vw;
     /* border: solid 1px red; */
-    margin-bottom: 1vh;
+    margin-top: 1vh;
     margin-left: 1vw;
-    font-size: 30px;
+    margin-bottom: 1vh;
+    background-color: #222831;
+    box-shadow: 0px 0px 2px 1px;
 `
 const DivContent = styled.div`
     display: flex;
     flex-direction: row;
     width: 100%;
+    margin-left: 1vw;
+    margin-bottom: 1vh;
 `
 const DivPoster = styled.div`
     height: 450px;
     width: 300px;
-    border: solid 1px blue;
+    
 `
 
 const ImgPoster = styled.img`
@@ -127,3 +134,4 @@ const DivInformation = styled.div`
     padding-left: 1vw;
     font-size: 20px;
 `
+

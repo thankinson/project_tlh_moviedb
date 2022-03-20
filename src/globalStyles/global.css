@@ -16,10 +16,20 @@ p{
     color: white;
   }
   
-  
-  
-  
-  
+  body{
+    overflow-x: hidden
+  }
+
+  /* react-collapsible css */
+  .Collapsible__trigger{
+    margin-left: 1vw;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    font-size: 30px;
+  }  
+
+
+
   /* ######################################### */
   /* flex settings */
   .div-flex{
