@@ -27,6 +27,6 @@ const LandingContainer = styled.div`
     align-items: center;
     height: 100%;
     width: 100%;
-    border: solid 1px green;
+    /* border: solid 1px green; */
 `;
 
