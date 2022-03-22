@@ -18,7 +18,7 @@ export const SearchApi = () =>{
                 console.log(errorLog)
             }
         };
- 
+        
         const submitHandler = (e) => {
             e.preventDefault();
             MovieApi()
