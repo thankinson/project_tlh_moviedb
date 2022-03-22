@@ -10,7 +10,7 @@ export const SearchApi = () =>{
     
     const MovieApi = async () =>{
         try {     
-            const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${REACT_APP_API_KEY}&query=${search}`);
+            const response = await fetch(`${REACT_APP_API_KEY}${search}`);
             const data = await response.json();
             console.log(data)
             setMovie(data.results)
