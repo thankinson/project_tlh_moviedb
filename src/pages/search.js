@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { Movieresults } from "../components/movieresult";
+import { listMovie } from "../utils";
 import "../globalStyles/global.css"
 const { REACT_APP_API_KEY } = process.env
 
@@ -24,6 +25,11 @@ export const SearchApi = () =>{
             MovieApi()
         };
 
+        // const movieList = (e) => {
+        //     e.preventDefault();
+        //     listMovie()
+        // };
+
     return(
         <>
         <DivSearch>
@@ -31,6 +37,9 @@ export const SearchApi = () =>{
                 <InputSearch placeholder="Search Movie Api" type="search" onChange={(e)=> setSearch(e.target.value)} />
                 <ButtonSearch>Search DB</ButtonSearch>
             </FormSearch>
+            {/* <form onSubmit={()=> listMovie} >
+            <button>List Movies</button>
+            </form> */}
             <Movieresults movie={movie} />
         </DivSearch>
         </>

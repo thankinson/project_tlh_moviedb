@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { addMovie } from "../utils";
 import Collapsible from "react-collapsible";
 import styled from "styled-components";
 import "../globalStyles/global.css"
@@ -13,13 +14,14 @@ export const Movieresults = ({movie}) =>{
         const submitHandler = (e) => {
             e.preventDefault();
             console.log(film);
+            addMovie(film)
         }
 
     return(
         <>
 
         <DivResults>
-        {movie && movie.map((item, index) => 
+        {movie && movie.map((key, index) => 
             <DivCollapse>
                 <Collapsible trigger={movie[index].original_title}>
                     <DivContent>
@@ -66,7 +68,7 @@ const DivCollapse = styled.div`
     margin-left: 1vw;
     margin-bottom: 1vh;
     background-color: #222831;
-    box-shadow: 0px 0px 2px 1px;
+    box-shadow: 0px 0px 2px 1px white;
 `
 const DivContent = styled.div`
     display: flex;
