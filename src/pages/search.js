@@ -17,12 +17,12 @@ export const SearchApi = () =>{
             } catch(errorLog){
                 console.log(errorLog)
             }
-        }
+        };
  
         const submitHandler = (e) => {
             e.preventDefault();
             MovieApi()
-        }
+        };
 
     return(
         <>
@@ -36,7 +36,7 @@ export const SearchApi = () =>{
         </>
 
     )
-}
+};
 
 
 // #######################################################
