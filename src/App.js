@@ -3,7 +3,7 @@ import {Header}  from "./pages/Header";
 import { Footer } from "./pages/Footer";
 import { Login } from "./components/login";
 import { SearchApi } from "./pages/search";
-import { Landing } from "./pages/landing";
+// import { Landing } from "./pages/landing";
 // import { MoviesList } from "./pages/listMovies"
 import { tokenLogin } from './utils';
 import styled from "styled-components";
