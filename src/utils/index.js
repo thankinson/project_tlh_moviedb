@@ -122,10 +122,11 @@ export const listMovie = async () => {
             headers: {"Content-Type": "application/json"},
         })
         const data = await response.JSON()
+        console.log(response)
         if (!data.msg) {
             throw new Error(data.err)
         }
     } catch (error) {
         
     }
-}
+};
