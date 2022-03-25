@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Footer =()=>{
+export const Footer = () =>{
     return (
         <FooterDiv>
             <h4> Personal Project || Tom Hankinson </h4>
@@ -21,7 +21,6 @@ const FooterDiv = styled.div`
     height: 5vh;
     width: 100%;
     background-color: rgb(51, 51, 61);
-    box-shadow: 0px 0px 10px 0px;
+    box-shadow: 0px 0px 10px 0px white;
 `;
 
-export default Footer;

@@ -1,15 +1,22 @@
 import { useState } from "react";
+import { createUser, login } from "../utils";
 import styled from "styled-components";
 
-export const Login = ({user, setUser}) =>{
-    const [username, setUsername] = useState();
+export const Login = ({setUser}) =>{
+    const [userName, setUsername] = useState();
     const [email, setEmail] = useState();
     const [pass, setPass] = useState();
     const [bool, setBool] = useState(false)
     
     const submitHandler = (e) => {
-        e.preventdefault();
-        
+        e.preventDefault(); 
+        if (bool) {
+            login(userName, pass, setUser)
+        } else {
+            if (email.includes("@")) {
+                createUser(userName, email, pass, setUser)
+            }
+        }
     }
 
     return (
@@ -29,7 +36,7 @@ export const Login = ({user, setUser}) =>{
                         <TextInput placeholder="Enter User Name" type="text" onChange={(e)=> setUsername(e.target.value) }/>
                         {!bool && <TextInput placeholder="Enter E-mail" type="email" onChange={(e)=> setEmail(e.target.value) } />}
                         <TextInput placeholder="Enter Password" type="password" onChange={(e)=> setPass(e.target.value)}/>
-                        <LogButton>Register</LogButton>
+                        <LogButton>{!bool ? "Register" : "Login"}</LogButton>
                     </LoginForm>
                 </LogIn>
 
@@ -59,7 +66,8 @@ const LoginContainer = styled.div`
     width: 20vw;
     height: 50vh;
     border-radius: 1vw;
-    border: solid 0.1vw blue;
+    background-color: #000000;
+    box-shadow: 0px 0px 2px 1px white;
     
 `
     const LogTitle = styled.div`
@@ -89,10 +97,20 @@ const LoginContainer = styled.div`
         height: 100%;
     `
     const LogButton = styled.button`
-        width: 250px;
-        height: 30px;
+        width: 14vw;
+        height: 4vh;
+        text-align: center;
+        border-radius: 10px;
+        border: solid 1px rgb(58, 58, 58);
+        background-color: #131516f6;
+        color: aliceblue;
     `
     const TextInput = styled.input`
-        width: 250px;
-        height: 30px;
+        width: 14vw;
+        height: 4vh;
+        text-align: center;
+        border-radius: 10px;
+        border: solid 1px rgb(58, 58, 58);
+        background-color: #131516f6;
+        color: aliceblue;
     `
