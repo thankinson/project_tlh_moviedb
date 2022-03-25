@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { Movieresults } from "../components/movieresult";
-import { MoviesList } from "./listMovies"
+// import { MoviesList } from "./listMovies"
 import "../globalStyles/global.css"
 const { REACT_APP_API_KEY } = process.env
 
