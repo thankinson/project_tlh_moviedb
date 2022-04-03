@@ -12,6 +12,12 @@ p{
     body{
     overflow-x: hidden;
     background-color: #131516;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
   }
 
   /* react-collapsible css */
@@ -20,8 +26,14 @@ p{
     margin-top: 1vh;
     margin-bottom: 1vh;
     font-size: 30px;
+    cursor:default;
     color: white;
-  }  
+  }
+
+  /* .contentContainerTagName {
+    font-size: 30px;
+    color: white;
+  } */
 
   button{
     background-color:  #202324;
@@ -34,46 +46,8 @@ p{
 
 
 
+ 
 
-  /* ######################################### */
-  /* flex settings */
-  .div-flex{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-  }
-  
-/* div{
-    border: 1px solid red;
-} */
 
-  /* ######################################### */
-        #div-content{
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 100%;
-        
-        }
-  
-          #div-search{
-            display: flex;
-            flex-direction: column;
-            justify-content: space-evenly;
-            width: 508px;
-            height: 100%;
-          }
-          #dbSearch{
-            width: 100%;
-            height: 50px;
-            border-radius: 50px;
-            border: solid 1px rgb(196, 196, 196);
-            box-shadow: 0px 0px 3px 0px;
-            text-align: center;
-            font-size: large;
-            outline: none;
-          }
-  
-  
   
  

@@ -16,11 +16,12 @@ const FooterDiv = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    position: fixed;
+    position: relative;
     bottom: 0;
     height: 5vh;
     width: 100%;
-    background-color: rgb(51, 51, 61);
-    box-shadow: 0px 0px 10px 0px white;
+    
+    /* background-color: rgb(51, 51, 61);
+    box-shadow: 0px 0px 10px 0px white; */
 `;
 

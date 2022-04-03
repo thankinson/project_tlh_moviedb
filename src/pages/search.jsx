@@ -1,14 +1,33 @@
 import { useState } from "react";
-import styled from "styled-components";
+import { Navigate } from "react-router-dom";
+import { useEffect } from "react";
+import { tokenLogin } from "../utils/index";
+
+// pages import
+import { Header } from "./Header";
+import { Navbar } from "../components/navbar";
 import { Movieresults } from "../components/movieresult";
-// import { MoviesList } from "./listMovies"
+import { Footer } from "./Footer";
+// styles
+import styled from "styled-components";
 import "../globalStyles/global.css"
 const { REACT_APP_API_KEY } = process.env
 
-export const SearchApi = () =>{
+export const SearchApi = ({user, setUser}) =>{
     const [movie, setMovie ] = useState([])
     const [search, setSearch] = useState()
+    const [show, setShow] = useState(false)
+
+    useEffect(() => {
+        document.title = "HMD | Search";
+      }, []);
     
+      if (!user && !localStorage.key("myToken")) {
+        <Navigate to="/" />;
+      } else if (!user && localStorage.key("myToken")) {
+        tokenLogin(setUser);
+      }
+
     const MovieApi = async () =>{
         try {     
             const response = await fetch(`${REACT_APP_API_KEY}${search}`);
@@ -28,6 +47,11 @@ export const SearchApi = () =>{
 
     return(
         <>
+        {(!user && !localStorage.key('myToken')) && <Navigate to="/"/>}
+        {(!user && localStorage.key('myToken')) && async function(setUser){ await tokenLogin(setUser) } }
+        <PageContainer>
+        <Header user={user}/>
+        <Navbar setUser={setUser}/>
         <DivSearch>
             <FormSearch onSubmit={submitHandler }>
                 <InputSearch placeholder="Search Movie Api" type="search" onChange={(e)=> setSearch(e.target.value)} />
@@ -36,6 +60,8 @@ export const SearchApi = () =>{
             {/* <MoviesList /> */}
             <Movieresults movie={movie} />
         </DivSearch>
+        
+        </PageContainer>
         </>
 
     )
@@ -44,6 +70,14 @@ export const SearchApi = () =>{
 
 // #######################################################
 // style componants
+
+const PageContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100vw;
+    height: 100vh;
+`
 
 const DivSearch = styled.div`
     width: 100vw;

@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { Navigate } from "react-router-dom";
 import { createUser, login } from "../utils";
 import styled from "styled-components";
 
-export const Login = ({setUser}) =>{
+export const Login = ({user, setUser}) =>{
     const [userName, setUsername] = useState();
     const [email, setEmail] = useState();
     const [pass, setPass] = useState();
@@ -21,15 +22,16 @@ export const Login = ({setUser}) =>{
 
     return (
             <>
+            {user && <Navigate to="/home" />}
             <LoginContainer>
-                <LogTitle>
+                {user && <Navigate to="/home" />}
                 <h3>
                     {!bool 
                         ? "Register" 
                         : "Login"
                     }
                 </h3>               
-                </LogTitle>
+                
 
                 <LogIn>
                      <LoginForm onSubmit={ submitHandler }>
@@ -40,7 +42,7 @@ export const Login = ({setUser}) =>{
                     </LoginForm>
                 </LogIn>
 
-                <Options>
+                
                     <LogButton onClick={()=> setBool(!bool)}>
                         {!bool 
                         ? "Already Hav Account? Click Here" 
@@ -49,7 +51,6 @@ export const Login = ({setUser}) =>{
                     </LogButton>
                     
 
-                </Options>
             </LoginContainer>
         </>
 
@@ -62,39 +63,25 @@ export const Login = ({setUser}) =>{
 const LoginContainer = styled.div`
     display: flex;
     flex-direction: column;
-    background-color: rgb;
+    align-items: center;
+    justify-content: space-evenly;
     width: 20vw;
     height: 50vh;
     border-radius: 1vw;
+    border: solid 1px;
     background-color: #000000;
-    box-shadow: 0px 0px 2px 1px white;
-    
-`
-    const LogTitle = styled.div`
-        display: flex;
-        width: 100%;
-        height: 20%;
-        justify-content: center;
-        align-items: center;
-    `
+   `
     const LogIn = styled.div`
-        width: 100%;
-        height: 60%;
-    `
-    const Options = styled.div`
-        display: flex;
-        width: 100%;
-        height: 20%;
-        justify-content: center;
-        align-items: center;
+        width: 20vw;
+        height: 30vh;
     `
     const LoginForm = styled.form`
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
         align-items: center;
-        width: 100%;
-        height: 100%;
+        min-width: 20vw;
+        min-height: 30vh;
     `
     const LogButton = styled.button`
         width: 14vw;

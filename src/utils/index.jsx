@@ -63,10 +63,11 @@ export const deleteUser = async (user) => {
     }
 };
 
-export const logout = () => {
+export const logout = ({ setUser }) => {
     try {
         localStorage.clear();
-        window.location.reload(false);
+        // window.location.reload(false);
+        setUser();
     } catch (error) {
         console.log(error)
     }
