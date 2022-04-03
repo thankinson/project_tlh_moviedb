@@ -14,6 +14,10 @@ import { tokenLogin } from "../utils/index";
 //  CSS
 import styled from "styled-components";
 
+// images
+import SearchImg from "../assets/searchbar.png"
+import FoundMovie from "../assets/foundmovie.png"
+
 export const Home = ({user, setUser}) =>{
     useEffect(() => {
         document.title = "HMD | Home";
@@ -31,7 +35,13 @@ export const Home = ({user, setUser}) =>{
                     <h2>Welcome to the Home movie Database</h2>
                 </AboutSiteTitle>
                 <AboutSiteInfo>
-                    <p></p>
+                    <p>The Home Movie Database is designed to be used as your personal movie collection database. </p>
+               
+                    <p>Search The Movie Database API for a film you want to add to your collection. </p>
+                    <ImagesSettings src={SearchImg} alt="search bar " />
+                    <p>Simply Click on the film you have searched for and click Add and it will be stored in your collection</p>
+                    <ImagesSettings src={ FoundMovie } alt="drop down window" />
+                    <p>To View your movies open the "My Movies" tab and scroll through your films</p>
 
                 </AboutSiteInfo>
             </AboutContaciner>
@@ -55,8 +65,6 @@ const HomeContentDiv = styled.div`
     width: 100vw;
     height: 100%;
     align-items: center;
-    border: solid 1px green;
-
 `
 const AboutContaciner = styled.div`
     width: 50%;
@@ -68,7 +76,11 @@ const AboutSiteTitle = styled.div`
 `
 const AboutSiteInfo = styled.div`
     width: 100%;
+    text-align: center;
     
+`
+const ImagesSettings = styled.img`
+    max-width: 500px;
 `
 
 // const HyperLink = styled.a`
