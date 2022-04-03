@@ -29,21 +29,45 @@ export const Navbar = ({setUser}) => {
 
     const PageLinks = () => (
         <>
-        {pageLinks.map(link =>(<li> <NavLink to={link.to} onClick={link.onClick} > {link.lable} </NavLink> </li> ))}
+        {pageLinks.map(link =>(<NaveTextContainer> <StyledNavLink to={link.to} onClick={link.onClick} > {link.lable} </StyledNavLink> </NaveTextContainer> ))}
         </>
       
     )
     return (
         <>
-            <nav>
-            <ul>
+            <NavbarContainer>
+            <NavbarLinks>
              <PageLinks />
-            </ul>
-           </nav>
+             </NavbarLinks>
+           </NavbarContainer>
         </>
     )
 
 }
 
+const NavbarContainer = styled.nav`
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 5vh;
+    background-color: #232323;
+`;
 
+    const NavbarLinks = styled(NavbarContainer)`
+    justify-content: center;
+    `;
+
+    const NaveTextContainer = styled.div`
+        display: flex;
+        width: 10vw;
+        height: 5vh;
+        justify-content: center;
+        align-items: center;
+    `
+    const StyledNavLink = styled(NavLink)`
+        text-decoration: none;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.25rem;
+        color: white;
+    `
 

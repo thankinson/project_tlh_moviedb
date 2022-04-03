@@ -7,7 +7,7 @@ import { tokenLogin } from "../utils/index";
 import { Header } from "./Header";
 import { Navbar } from "../components/navbar";
 import { Movieresults } from "../components/movieresult";
-import { Footer } from "./Footer";
+
 // styles
 import styled from "styled-components";
 import "../globalStyles/global.css"
@@ -16,7 +16,6 @@ const { REACT_APP_API_KEY } = process.env
 export const SearchApi = ({user, setUser}) =>{
     const [movie, setMovie ] = useState([])
     const [search, setSearch] = useState()
-    const [show, setShow] = useState(false)
 
     useEffect(() => {
         document.title = "HMD | Search";
@@ -105,6 +104,8 @@ const InputSearch = styled.input`
     border-radius: 10px;
     font-size: 25px;
     text-align: center;
+    background-color:  #202324;
+    color: white;
 `
 
 const ButtonSearch = styled.button`
@@ -112,4 +113,6 @@ const ButtonSearch = styled.button`
     height: 50px;
     border-radius: 10px;
     margin-left: 1vw;
+    background-color:  #202324;
+    color: white;
 `
