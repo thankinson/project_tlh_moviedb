@@ -1,18 +1,21 @@
-import { logout } from "../utils";
 import styled from "styled-components";
+
 
 export const Header =({user})=>{
     return (
-        <Banner>
-          <SpaceDiv></SpaceDiv>
-          <TitleDiv>
-          <Title>Home Movie Database</Title>
-          </TitleDiv>
-          {user &&<SpaceDiv>
-              <p>{user} is logged in</p>
-              <LogoutButton onClick={logout}>Logout</LogoutButton>
-          </SpaceDiv>}
-        </Banner>
+      <>
+          <Banner>
+            <SpaceDiv></SpaceDiv>
+            <TitleDiv>
+            <Title>Home Movie Database</Title>
+            </TitleDiv>
+            {user &&<SpaceDiv>
+                <p>{user} is logged in</p>
+            </SpaceDiv>}
+          </Banner>
+         
+        </>
+        
     );
 };
 
@@ -25,10 +28,10 @@ const Banner = styled.div`
   align-items: center;
   height: 10vh;
   width: 100vw;
-  padding-left: 10px;
+  /* padding-left: 10px;
   padding-right: 10px;
   background-color: goldenrod;
-  box-shadow: 0px 0px 10px 0px white;
+  box-shadow: 0px 0px 10px 0px white; */
 `
 const TitleDiv = styled.div`
   display: flex;
@@ -44,11 +47,4 @@ const SpaceDiv = styled.div`
   width: 10vw;
   height: 10vh;
 `
-const LogoutButton = styled.button`
-  width: 100px;
-  height: 25px;
-  border-radius: 5px;
-  border: none;
-  background: none;
-  padding: 0;
-`
+
