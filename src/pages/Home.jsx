@@ -36,13 +36,11 @@ export const Home = ({user, setUser}) =>{
                 </AboutSiteTitle>
                 <AboutSiteInfo>
                     <p>The Home Movie Database is designed to be used as your personal movie collection database. </p>
-               
                     <p>Search The Movie Database API for a film you want to add to your collection. </p>
                     <ImagesSettings src={SearchImg} alt="search bar " />
                     <p>Simply Click on the film you have searched for and click Add and it will be stored in your collection</p>
                     <ImagesSettings src={ FoundMovie } alt="drop down window" />
                     <p>To View your movies open the "My Movies" tab and scroll through your films</p>
-
                 </AboutSiteInfo>
             </AboutContaciner>
             </HomeContentDiv>
