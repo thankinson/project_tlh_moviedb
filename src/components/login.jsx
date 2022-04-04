@@ -21,7 +21,7 @@ export const Login = ({user, setUser}) =>{
     }
 
     return (
-            <>
+            <PageContainer>
             {user && <Navigate to="/home" />}
             <LoginContainer>
                 {user && <Navigate to="/home" />}
@@ -52,7 +52,7 @@ export const Login = ({user, setUser}) =>{
                     
 
             </LoginContainer>
-        </>
+        </PageContainer>
 
     )
     
@@ -60,6 +60,15 @@ export const Login = ({user, setUser}) =>{
 
 // ##########################################################
 // styled componebts here
+
+const PageContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+`
 const LoginContainer = styled.div`
     display: flex;
     flex-direction: column;

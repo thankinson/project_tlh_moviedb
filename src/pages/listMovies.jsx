@@ -1,8 +1,10 @@
 import { ListAll } from "../components/mymovies";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { tokenLogin } from "../utils";
+import { Navigate } from "react-router-dom";
 const dbConnection = process.env.REACT_APP_REST_API
 
-export const MoviesList = () => {
+export const MoviesList = ({user, setuser}) => {
 const [list, setList] = useState([])
 
     const listMovie = async () => {
@@ -21,12 +23,6 @@ const [list, setList] = useState([])
     useEffect(() => {
         document.title = "HMD | My collection";
     }, []);
-
-    if (!user && !localStorage.key("myToken")) {
-        <Navigate to="/" />;
-    } else if (!user && localStorage.key("myToken")) {
-        tokenLogin(setUser);
-    }
 
 
     const submitHandler = (e) => {

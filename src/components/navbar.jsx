@@ -18,7 +18,7 @@ export const Navbar = ({setUser}) => {
         lable: "Search"
     },
     {
-        to: "/user",
+        to: "/list",
         lable: "My Movies"
     },
     {
