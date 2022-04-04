@@ -1,47 +1,58 @@
-import { ListAll } from "../components/mymovies";
+
 import { useState, useEffect } from "react";
 import { tokenLogin } from "../utils";
 import { Navigate } from "react-router-dom";
+
+// Pages
+import { Header } from "./Header";
+import { Footer } from "./Footer";
+
+// Componantas
+import { Navbar } from "../components/navbar";
+import { ListAll } from "../components/mymovies";
+
+// Styled componants
+import styled from "styled-components";
+
 const dbConnection = process.env.REACT_APP_REST_API
 
-export const MoviesList = ({user, setuser}) => {
-const [list, setList] = useState([])
+export const MoviesList = ({user, setUser}) => {
 
-    const listMovie = async () => {
-        
-        try {     
-            const response = await fetch(`${dbConnection}movie`);
-            const data = await response.json();
-            console.log(data)
-            setList(data.allMovie)
-            } catch(errorLog){
-                console.log(errorLog)
-            }
-    
-    };
 
     useEffect(() => {
         document.title = "HMD | My collection";
     }, []);
 
-
-    const submitHandler = (e) => {
-        e.preventDefault();
-        listMovie()
-    };
-
     return (
         
-          <>  
+          <PageContainer>  
                 {(!user && !localStorage.key('myToken')) && <Navigate to="/"/>}
                 {(!user && localStorage.key('myToken')) && async function(setUser){ await tokenLogin(setUser) } }
-            <form onSubmit={ submitHandler }>
-                <button>cleck here</button>
-            </form>
-            <ListAll list={list}/>
-          </>
+            <Header user={user} />
+            <Navbar setUser={setUser}/>
+            <PageContent>
+                  <ListAll />
+            </PageContent>
+     
+          </PageContainer>
       
 
     )
 
-}
+};
+
+// Styled Componants
+
+const PageContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100%;
+`
+const PageContent = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+`

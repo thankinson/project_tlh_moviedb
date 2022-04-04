@@ -4,7 +4,6 @@ import Collapsible from "react-collapsible";
 import styled from "styled-components";
 import "../globalStyles/global.css"
 
-
 export const Movieresults = ({movie}) =>{
     const [film, setFilm] = useState({
         id: '',
@@ -26,7 +25,7 @@ export const Movieresults = ({movie}) =>{
                 <Collapsible trigger={movie[index].original_title}>
                     <DivContent>
                         <DivPoster>
-                            <ImgPoster src={`https://image.tmdb.org/t/p/w500${movie[index].poster_path}`} alt={`${movie[index].original_title} Poster`} />
+                            <ImgPoster src={`https://image.tmdb.org/t/p/w300${movie[index].poster_path}`} alt={`${movie[index].original_title} Poster`} />
                         </DivPoster>
                         <form onSubmit={submitHandler}>
                         <DivInformation>
