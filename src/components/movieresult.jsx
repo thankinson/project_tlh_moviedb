@@ -4,7 +4,6 @@ import Collapsible from "react-collapsible";
 import styled from "styled-components";
 import "../globalStyles/global.css"
 
-
 export const Movieresults = ({movie}) =>{
     const [film, setFilm] = useState({
         id: '',
