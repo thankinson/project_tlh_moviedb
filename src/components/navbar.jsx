@@ -51,6 +51,7 @@ const NavbarContainer = styled.nav`
     width: 100%;
     height: 5vh;
     background-color: #232323;
+    align-items: flex-end;
 `;
 
     const NavbarLinks = styled(NavbarContainer)`
@@ -60,14 +61,38 @@ const NavbarContainer = styled.nav`
     const NaveTextContainer = styled.div`
         display: flex;
         width: 10vw;
-        height: 5vh;
+        height: 4vh;
         justify-content: center;
         align-items: center;
+
     `
     const StyledNavLink = styled(NavLink)`
+        display: flex;
+        width: 9vw;
+        height: 4vh;
+        justify-content: center;
+        align-items: center;
         text-decoration: none;
         font-family: Arial, Helvetica, sans-serif;
         font-size: 1.25rem;
         color: white;
+        background-color: #1c1c1c;
+        border-top:solid 1px #707070;
+        border-left:solid 1px #707070;
+        border-right:solid 1px #707070;
+        &.active {
+            background-color: #393939;
+        };
+        border-top-left-radius: 1vw;
+        border-top-right-radius: 1vw;
     `
 
+
+// const ActiveNavConstainer = styled(NaveTextContainer).attrs({
+//     activeClassName,
+// })`
+    
+//     &.${activeClassName}{
+//         background-color: #232323;
+//     }
+// `
