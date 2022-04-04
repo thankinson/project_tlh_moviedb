@@ -1,11 +1,9 @@
-
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { tokenLogin } from "../utils";
 import { Navigate } from "react-router-dom";
 
 // Pages
 import { Header } from "./Header";
-import { Footer } from "./Footer";
 
 // Componantas
 import { Navbar } from "../components/navbar";
@@ -14,10 +12,7 @@ import { ListAll } from "../components/mymovies";
 // Styled componants
 import styled from "styled-components";
 
-const dbConnection = process.env.REACT_APP_REST_API
-
 export const MoviesList = ({user, setUser}) => {
-
 
     useEffect(() => {
         document.title = "HMD | My collection";
@@ -25,7 +20,7 @@ export const MoviesList = ({user, setUser}) => {
 
     return (
         
-          <PageContainer>  
+        <PageContainer>  
                 {(!user && !localStorage.key('myToken')) && <Navigate to="/"/>}
                 {(!user && localStorage.key('myToken')) && async function(setUser){ await tokenLogin(setUser) } }
             <Header user={user} />
@@ -33,9 +28,7 @@ export const MoviesList = ({user, setUser}) => {
             <PageContent>
                   <ListAll />
             </PageContent>
-     
-          </PageContainer>
-      
+        </PageContainer>      
 
     )
 
