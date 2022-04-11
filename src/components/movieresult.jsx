@@ -38,24 +38,25 @@ export const Movieresults = ({movie, checkMovie}) =>{
         // console.log( isIn)
         // }
 
+
     return(
         <>
 
         <DivResults>
-        {movie && movie.map((key, index) => 
-            <DivCollapse>
-                <Collapsible trigger={movie[index].original_title}>
+        {movie && movie.map((movie, index) => 
+            <DivCollapse key={index}>
+                <Collapsible trigger={movie.original_title}>
                     <DivContent>
                         <DivPoster>
-                            <ImgPoster src={`https://image.tmdb.org/t/p/w300${movie[index].poster_path}`} alt={`${movie[index].original_title} Poster`} />
+                            <ImgPoster src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={`${movie.original_title} Poster`} />
                         </DivPoster>
                         <form onSubmit={submitHandler}>
                         <DivInformation>
-                            <p>Movie ID: {movie[index].id}</p>
-                            <p>Released: {movie[index].release_date}</p>
+                            <p>Movie ID: {movie.id}</p>
+                            <p>Released: {movie.release_date}</p>
                             <p>Synopsis:</p>
-                            <p>{movie[index].overview}</p>
-                            <p>Raiting: {movie[index].vote_average}</p>
+                            <p>{movie.overview}</p>
+                            <p>Raiting: {movie.vote_average}</p>
                               {/* trying to get this to check db on each map. with no success */}
                               {/* this returns fales on all */}
 
@@ -65,7 +66,8 @@ export const Movieresults = ({movie, checkMovie}) =>{
                             {console.log(movie[index].id)} */}
                             <ButtonDiv>
                                     {/* <ButtonAdd onClick={()=> setFilm({id: movie[index].id,title: movie[index].original_title, poster: movie[index].poster_path})}>Add to Collection</ButtonAdd> */}
-                                    {(checkMovie.includes(movie[index].id)) ? <p>Movie in Database</p> : <ButtonAdd onClick={()=> setFilm({id: movie[index].id,title: movie[index].original_title, poster: movie[index].poster_path})}>Add to Collection</ButtonAdd>} 
+                                    {(checkMovie.includes(movie.id)) ? <p>Movie in Database</p> : <ButtonAdd onClick={()=> setFilm({id: movie.id,title: movie.original_title, poster: movie.poster_path})}>Add to Collection</ButtonAdd>} 
+                                    {/* {(checkMovie.find(i => i == movie.id)) ? <p>Movie in Database</p> : <ButtonAdd onClick={()=> setFilm({id: movie.id,title: movie.original_title, poster: movie.poster_path})}>Add to Collection</ButtonAdd>}  */}
                                 </ButtonDiv>
                        
                         </DivInformation>
@@ -202,3 +204,9 @@ const ButtonAdd = styled.button`
                                 // {!movie[index].id.includes(checkMovie) && <ButtonDiv>
                                 //     <ButtonAdd onClick={()=> setFilm({id: movie[index].id,title: movie[index].original_title, poster: movie[index].poster_path})}>Add to Collection</ButtonAdd>
                                 // </ButtonDiv>}
+                                // const CheckDb = ({inDb, inApi}) => {
+                                //     if (inDb.includes(inApi)) {
+                                //         return "(<p> in db</p>)"
+                                
+                                //     }
+                                // }

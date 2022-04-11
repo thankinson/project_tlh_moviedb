@@ -6,22 +6,23 @@ const dbConnection = process.env.REACT_APP_REST_API
 export const ListAll = () =>{
     const [list, setList] = useState()
     
-    const listMovie = async () => {
-        try {     
-            const response = await fetch(`${dbConnection}movie`);
-            const data = await response.json();
-            console.log(data)
-            setList(data.allMovie)
-            } catch(errorLog){
-                console.log(errorLog)
-            }
-    };
-
-    useEffect(async () => {await listMovie();}, []);
+    useEffect(()=> {
+        const listMovie = async () => {
+            try {     
+                const response = await fetch(`${dbConnection}movie`);
+                const data = await response.json();
+                console.log(data)
+                setList(data.allMovie)
+                } catch(errorLog){
+                    console.log(errorLog)
+                }
+        };
+        listMovie();
+    }, [])
 
     return (
         <>
-            {list && list.map((key, index) => <PosterDiv><ImgPoster src={`https://image.tmdb.org/t/p/w200${list[index].poster}`} alt={`${list[index].title} Poster`} /></PosterDiv>)}
+            {list && list.map((list, index) => <PosterDiv key={index}><ImgPoster src={`https://image.tmdb.org/t/p/w200${list.poster}`} alt={`${list.title} Poster`} /></PosterDiv>)}
         </>
     )
 

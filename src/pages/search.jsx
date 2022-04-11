@@ -50,8 +50,6 @@ export const SearchApi = ({user, setUser}) =>{
                 }
         
         };
-
-        // useEffect( () => {myCollection();}, []);
         
         const submitHandler = (e) => {
             e.preventDefault();

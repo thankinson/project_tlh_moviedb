@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import styled from "styled-components";
 
 
@@ -77,19 +77,8 @@ export const TestPage =()=>{
 
     // checkArrys()
 
-    const checkArrys = () =>{
 
-        for (let i = 0; i < test.length; i++){
-            for (let x = 0; x < movie.length; x++){
-                if (test[i].tmdbId == movie[x].id){
-                    console.log(`${i} and ${x} num. Test num is ${test[i].tmdbId}. Movie Num is ${movie[x].id}`)
-                }
-            }
-        }
 
-    }
-
-    checkArrys()
 
     // const checkArrays = () => {
     //     for (let i = 0; i < movie.length; i++){
@@ -112,7 +101,17 @@ export const TestPage =()=>{
 
     // checkArrays()
     
+    const checkArrys = () =>{
+          for (let i = 0; i < test.length; i++){
+            for (let x = 0; x < movie.length; x++){
+                if (test[i].tmdbId == movie[x].id){
+                    console.log(`${i} and ${x} num. Test num is ${test[i].tmdbId}. Movie Num is ${movie[x].id}`)
+                }
+            }
+        }
+    }
 
+    checkArrys()
     
     return(
         <>
@@ -122,12 +121,11 @@ export const TestPage =()=>{
         <form onSubmit={submitHandler}>
             <button>Click</button>
         </form>
-        {test &&test.map((key, index) => <Pstyle>{test[index].tmdbId}</Pstyle>)}
+        {test &&test.map((key, index) => <Pstyle key={index}> {key.tmdbId}</Pstyle>)}
         </InDB>
         <Api>
-            <p>API call
-            </p>
-        {movie &&movie.map((key, index) => <Pstyle>{movie[index].id}</Pstyle>)}
+            <p>API call</p>
+        {movie &&movie.map((key, index) => <Pstyle key={index}>{key.id}</Pstyle>)}
         </Api>
         </MainDiv>
         </>
