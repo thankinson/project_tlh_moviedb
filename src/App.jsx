@@ -6,9 +6,13 @@ import { tokenLogin } from './utils';
 import { Home } from "./pages/Home";
 import { SearchApi } from "./pages/search";
 import { MoviesList } from "./pages/listMovies";
+import { TestPage } from "./pages/testpage";
 
 //componatns 
 import { Login } from "./components/login";
+
+// css
+import "./globalStyles/global.css"
 
 
 const App = () => {
@@ -32,6 +36,8 @@ const App = () => {
                             <Route path="/search" element={<SearchApi user={user} setUser={setUser}/>} />
 
                             <Route path="/list" element={< MoviesList user={user} setUser={setUser} />} />
+
+                            <Route path="/test" element={< TestPage user={user} setUser={setUser} />} />
 
                         </Routes>
                     </BrowserRouter>

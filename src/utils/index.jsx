@@ -123,11 +123,23 @@ export const listMovie = async () => {
             headers: {"Content-Type": "application/json"},
         })
         const data = await response.JSON()
-        console.log(response)
+        console.log(data)
         if (!data.msg) {
             throw new Error(data.err)
         }
     } catch (error) {
         
     }
+};
+
+export const myCollection = async () => {
+    try {     
+        const response = await fetch(`${dbConnection}movie`);
+        const data = await response.json();
+        console.log(data.allMovie)
+        // setCheckMovie(data.allMovie)
+        } catch(errorLog){
+            console.log(errorLog);
+        }
+
 };

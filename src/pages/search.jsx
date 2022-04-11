@@ -12,10 +12,11 @@ import { Movieresults } from "../components/movieresult";
 import styled from "styled-components";
 import "../globalStyles/global.css"
 const { REACT_APP_API_KEY } = process.env
-
+const dbConnection = process.env.REACT_APP_REST_API
 export const SearchApi = ({user, setUser}) =>{
     const [movie, setMovie ] = useState([])
     const [search, setSearch] = useState()
+    const [checkMovie, setCheckMovie] = useState([])
 
     useEffect(() => {
         document.title = "HMD | Search";
@@ -37,10 +38,26 @@ export const SearchApi = ({user, setUser}) =>{
                 console.log(errorLog)
             }
         };
+
+        const MyCollection = async () => {
+            try {     
+                const response = await fetch(`${dbConnection}movie`);
+                const data = await response.json();
+                console.log(data.allMovie)
+                setCheckMovie(data.allMovie)
+                } catch(errorLog){
+                    console.log(errorLog);
+                }
+        
+        };
+
+        // useEffect( () => {myCollection();}, []);
         
         const submitHandler = (e) => {
             e.preventDefault();
             MovieApi()
+            MyCollection()
+
         };
 
 
@@ -57,7 +74,7 @@ export const SearchApi = ({user, setUser}) =>{
                 <ButtonSearch>Search DB</ButtonSearch>
             </FormSearch>
             {/* <MoviesList /> */}
-            <Movieresults movie={movie} />
+            <Movieresults movie={movie} checkMovie={checkMovie}/>
         </DivSearch>
         
         </PageContainer>
