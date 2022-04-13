@@ -29,7 +29,7 @@ export const Navbar = ({setUser}) => {
 
     const PageLinks = () => (
         <>
-        {pageLinks.map(link =>(<NaveTextContainer> <StyledNavLink to={link.to} onClick={link.onClick} > {link.lable} </StyledNavLink> </NaveTextContainer> ))}
+        {pageLinks.map((link, index) =>(<NaveTextContainer key={index}> <StyledNavLink to={link.to} onClick={link.onClick} > {link.lable} </StyledNavLink> </NaveTextContainer> ))}
         </>
       
     )
