@@ -3,15 +3,16 @@ import { addMovie } from "../utils";
 import Collapsible from "react-collapsible";
 import styled from "styled-components";
 
+
 import "../globalStyles/global.css"
 
-export const Movieresults = ({movie, checkMovie}) =>{
+export const Movieresults = ({movie}) =>{
 
     const [film, setFilm] = useState({
         id: '',
         title: '',
         poster: ''})
-  
+ 
         const submitHandler = (e) => {
             e.preventDefault();
             console.log(film);
@@ -32,13 +33,6 @@ export const Movieresults = ({movie, checkMovie}) =>{
     
         // checkArrys()
 
-        // const CheckArray = (dbMovie, apiMovie) => {
-        // let isIn = dbMovie.includes(apiMovie)
-        // console.log("API MOVIESS" + apiMovie)
-        // console.log( isIn)
-        // }
-
-
     return(
         <>
 
@@ -57,19 +51,9 @@ export const Movieresults = ({movie, checkMovie}) =>{
                             <p>Synopsis:</p>
                             <p>{movie.overview}</p>
                             <p>Raiting: {movie.vote_average}</p>
-                              {/* trying to get this to check db on each map. with no success */}
-                              {/* this returns fales on all */}
-
-                            {/* this returns true on all */}
-                            {/* {<CheckArray dbMovie={checkMovie} apiMovie={movie[index].id} /> ? <p>Movie in Database</p> : <p>Movie not in database</p>}  */}
-                            {/* {console.log(checkMovie.includes(movie[index].id))}
-                            {console.log(movie[index].id)} */}
-                            <ButtonDiv>
-                                    {/* <ButtonAdd onClick={()=> setFilm({id: movie[index].id,title: movie[index].original_title, poster: movie[index].poster_path})}>Add to Collection</ButtonAdd> */}
-                                    {(checkMovie.includes(movie.id)) ? <p>Movie in Database</p> : <ButtonAdd onClick={()=> setFilm({id: movie.id,title: movie.original_title, poster: movie.poster_path})}>Add to Collection</ButtonAdd>} 
-                                    {/* {(checkMovie.find(i => i == movie.id)) ? <p>Movie in Database</p> : <ButtonAdd onClick={()=> setFilm({id: movie.id,title: movie.original_title, poster: movie.poster_path})}>Add to Collection</ButtonAdd>}  */}
-                                </ButtonDiv>
-                       
+                            <ButtonDiv key={index}>
+                                    <ButtonAdd onClick={()=> setFilm({id: movie[index].id,title: movie[index].original_title, poster: movie[index].poster_path})}>Add to Collection</ButtonAdd>
+                            </ButtonDiv>
                         </DivInformation>
                         </form>
                     </DivContent>                 
@@ -133,80 +117,97 @@ const ButtonAdd = styled.button`
 
 // the chopping block
 
-                                // {/* {movie &&(() => {for (let i = 0; i < checkMovie.length; i++){
-                                //         if (movie.includes(checkMovie[i].tmdbId)){
-                                //             console.log("Movie found")
-                                //             return <p>in database</p>
-                                //         } else {
-                                //             return <p>Not in database</p>
-                                //         }
-                                //     }})} */}
-                                // {/* {checkMovie && movie.includes(checkMovie[index].tmdbid)} */}
+// {/* {movie &&(() => {for (let i = 0; i < checkMovie.length; i++){
+//         if (movie.includes(checkMovie[i].tmdbId)){
+//             console.log("Movie found")
+//             return <p>in database</p>
+//         } else {
+//             return <p>Not in database</p>
+//         }
+//     }})} */}
+// {/* {checkMovie && movie.includes(checkMovie[index].tmdbid)} */}
 
-                                // {!movie.includes(checkMovie.tmdbid) && (<p>movie in database</p>)}
-                                        // const myCollection = async () => {
-                                //     try {     
-                                //         const response = await fetch(`${dbConnection}movie`);
-                                //         const data = await response.json();
-                                //         console.log(data.allMovie)
-                                //         setCheckMovie(data.allMovie)
-                                //         } catch(errorLog){
-                                //             console.log(errorLog);
-                                //         }
-                                
-                                // };
+// {!movie.includes(checkMovie.tmdbid) && (<p>movie in database</p>)}
+// const myCollection = async () => {
+//     try {     
+//         const response = await fetch(`${dbConnection}movie`);
+//         const data = await response.json();
+//         console.log(data.allMovie)
+//         setCheckMovie(data.allMovie)
+//         } catch(errorLog){
+//             console.log(errorLog);
+//         }
 
-                                // useEffect( () => {myCollection();}, []);
+// };
 
-                                // {(() => {
-                                //     let movieApi = movie[index].id
-                                //     for (let i = 0; i < checkMovie.length; i++ ){
-                                //         if (movieApi.includes(checkMovie[i].tmdbid)){
-                                //             return <p>Already in database</p>
-                                //         } else {
+// useEffect( () => {myCollection();}, []);
 
-                                // const MovieCheck = () => {
-                                //     if(
-                                //         checkMovie.map((a) => a.tmdbid).find((element) => element == movie.id) == undefined){}
-                                // }
+// {(() => {
+//     let movieApi = movie[index].id
+//     for (let i = 0; i < checkMovie.length; i++ ){
+//         if (movieApi.includes(checkMovie[i].tmdbid)){
+//             return <p>Already in database</p>
+//         } else {
 
-                                // const Moviecheck = () => {
-                                //     for (let i = 0; i < checkMovie.length; i++ ){
-                                //     if (movie.includes(checkMovie[i].tmdbid)){
-                                //         return <p>in database</p>
-                                //     } else {
-                                //         return <p>not in database</p>
-                                //     }}
-                                // }
+// const MovieCheck = () => {
+//     if(
+//         checkMovie.map((a) => a.tmdbid).find((element) => element == movie.id) == undefined){}
+// }
 
-                                // const CheckMovie = (movie, checkMovie) => {
-                                //     for (let i = 0; i < checkMovie.length; i++){
-                                //         for (let x = 0; x < movie.length; x++) {
-                                //             if(checkMovie[i].tmdbid == movie[x].id){
-                                //                 return <p>Movie In Database</p>
-                                //             } else {
-                                //                 return <p>not in db</p>
-                                //             }
-                                //         }
-                                //     }
-                                // }
+// const Moviecheck = () => {
+//     for (let i = 0; i < checkMovie.length; i++ ){
+//     if (movie.includes(checkMovie[i].tmdbid)){
+//         return <p>in database</p>
+//     } else {
+//         return <p>not in database</p>
+//     }}
+// }
 
-                                // const checkArrays = () => {
-                                //     for (let i = 0; i < movie.length; i++){
-                                //         for(let j = 0; j < test.length; j++){
-                                //         if (test[i].tmdbId === movie[i].id){
-                                //             // console.log(`${i}, DP num ${test[i].tmdbId} MATCHS Movie num ${movie[i].id}`)
-                                //             }  
-                                //             }
-                                //         }
-                                    
-                                // }
-                                // {!movie[index].id.includes(checkMovie) && <ButtonDiv>
-                                //     <ButtonAdd onClick={()=> setFilm({id: movie[index].id,title: movie[index].original_title, poster: movie[index].poster_path})}>Add to Collection</ButtonAdd>
-                                // </ButtonDiv>}
-                                // const CheckDb = ({inDb, inApi}) => {
-                                //     if (inDb.includes(inApi)) {
-                                //         return "(<p> in db</p>)"
-                                
-                                //     }
-                                // }
+// const CheckMovie = (movie, checkMovie) => {
+//     for (let i = 0; i < checkMovie.length; i++){
+//         for (let x = 0; x < movie.length; x++) {
+//             if(checkMovie[i].tmdbid == movie[x].id){
+//                 return <p>Movie In Database</p>
+//             } else {
+//                 return <p>not in db</p>
+//             }
+//         }
+//     }
+// }
+
+// const checkArrays = () => {
+//     for (let i = 0; i < movie.length; i++){
+//         for(let j = 0; j < test.length; j++){
+//         if (test[i].tmdbId === movie[i].id){
+//             // console.log(`${i}, DP num ${test[i].tmdbId} MATCHS Movie num ${movie[i].id}`)
+//             }  
+//             }
+//         }
+
+// }
+// {!movie[index].id.includes(checkMovie) && <ButtonDiv>
+//     <ButtonAdd onClick={()=> setFilm({id: movie[index].id,title: movie[index].original_title, poster: movie[index].poster_path})}>Add to Collection</ButtonAdd>
+// </ButtonDiv>}
+// const CheckDb = ({inDb, inApi}) => {
+//     if (inDb.includes(inApi)) {
+//         return "(<p> in db</p>)"
+
+//     }
+// }
+// {/* {checkMovie.includes(movie.id) ? <p>Movie in Database</p> : <ButtonAdd onClick={()=> setFilm({id: movie.id,title: movie.original_title, poster: movie.poster_path})}>Add to Collection</ButtonAdd>}  */}
+// {/* {(checkMovie.find(i => i == movie.id)) ? <p>Movie in Database</p> : <ButtonAdd onClick={()=> setFilm({id: movie.id,title: movie.original_title, poster: movie.poster_path})}>Add to Collection</ButtonAdd>}  */}
+// {/* {(checkMovie.some(x => x === movie.id)) ? <p>Movie in Database</p> : <ButtonAdd onClick={()=> setFilm({id: movie.id,title: movie.original_title, poster: movie.poster_path})}>Add to Collection</ButtonAdd>}  */}
+// {/* <IsinDB checkDb={checkMovie} checkApi={movie.id} /> */}
+//                                       {/* trying to get this to check db on each map. with no success */}
+//   {/* this returns fales on all */}
+
+// {/* this returns true on all */}
+// {/* {<CheckArray dbMovie={checkMovie} apiMovie={movie[index].id} /> ? <p>Movie in Database</p> : <p>Movie not in database</p>}  */}
+// {/* {console.log(checkMovie.includes(movie[index].id))}
+// {console.log(movie[index].id)} */}
+
+// const CheckArray = (dbMovie, apiMovie) => {
+// let isIn = dbMovie.includes(apiMovie)
+// console.log("API MOVIESS" + apiMovie)
+// console.log( isIn)
+// }
