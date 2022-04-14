@@ -6,8 +6,12 @@ import styled from "styled-components";
 
 import "../globalStyles/global.css"
 
-export const Movieresults = ({movie}) =>{
+export const Movieresults = ({movie, idArray}) =>{
+    // console.log("checkmovie......... " + checkMovie)
+    // console.log("movie......... " + movie)
+    // console.log("check......... " + check)
 
+    const [check, setCheck] = useState()
     const [film, setFilm] = useState({
         id: '',
         title: '',
@@ -19,19 +23,17 @@ export const Movieresults = ({movie}) =>{
             addMovie(film)
 
         }
-
-        // const checkArrys = () =>{
-
-        //     for (let i = 0; i < checkMovie.length; i++){
-        //         for (let x = 0; x < movie.length; x++){
-        //             if (checkMovie[i].tmdbId == movie[x].id){
-        //                 console.log(`${i} and ${x} num. Test num is ${checkMovie[i].tmdbId}. Movie Num is ${movie[x].id}`)
-        //             }
-        //         }
+  
+        // const CheckArray = () =>{
+        //     const temp = [""]
+            
+        //     for ( let i = 0; i < checkMovie.length; i++ ){
+        //             temp.push(checkMovie[i].tmdbId)
         //     }
+        //     setCheck(temp)
+
         // }
-    
-        // checkArrys()
+        // CheckArray()
 
     return(
         <>
@@ -51,8 +53,12 @@ export const Movieresults = ({movie}) =>{
                             <p>Synopsis:</p>
                             <p>{movie.overview}</p>
                             <p>Raiting: {movie.vote_average}</p>
-                            <ButtonDiv key={index}>
-                                    <ButtonAdd onClick={()=> setFilm({id: movie[index].id,title: movie[index].original_title, poster: movie[index].poster_path})}>Add to Collection</ButtonAdd>
+                            <ButtonDiv>
+                                
+                               {idArray.includes(movie) ? <p>movie in database</p>
+                                                        : <ButtonAdd onClick={()=> setFilm({id: movie[index].id,title: movie[index].original_title, poster: movie[index].poster_path})}>Add to Collection</ButtonAdd>
+                                                        }
+                                  {/* <ButtonAdd onClick={()=> setFilm({id: movie[index].id,title: movie[index].original_title, poster: movie[index].poster_path})}>Add to Collection</ButtonAdd> */}
                             </ButtonDiv>
                         </DivInformation>
                         </form>
@@ -112,3 +118,19 @@ const ButtonAdd = styled.button`
     width: 200px;
     height: 50px;
 `
+
+
+
+
+        // const CheckDB = ({check}) => {
+        //     for (let i = 0; i < checkMovie.length; i++) {
+        //             if (checkMovie[i].tmdbId === check){
+        //                 return (
+        //                     <><p>{check} is in database</p></>
+        //                 )
+        //             } 
+        //         }
+        // }
+        //                       {/* {movie ? setCheck(movie.id)} */}
+        //                            {/* {!movie && <CheckDB  check={movie.id}/>} */}
+        // {checkMovie.find(x => (x.tmdbId !== movie.id)) ? <p>Movie in database</p> : <ButtonAdd onClick={()=> setFilm({id: movie[index].id,title: movie[index].original_title, poster: movie[index].poster_path})}>Add to Collection</ButtonAdd> }
