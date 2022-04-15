@@ -43,7 +43,7 @@ export const Login = ({user, setUser}) =>{
 
                     <LogButton onClick={()=> setBool(!bool)}>
                         {!bool 
-                        ? "Already Hav Account? Click Here" 
+                        ? "Already Have Account? Click Here" 
                         : "No account? Click Here" 
                         }
                     </LogButton>
