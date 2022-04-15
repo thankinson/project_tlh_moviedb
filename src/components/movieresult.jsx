@@ -1,12 +1,16 @@
 import { useState} from "react";
-import { addMovie } from "../utils";
 import Collapsible from "react-collapsible";
+// utils
+import { addMovie } from "../utils";
+
+// css
 import styled from "styled-components";
-
-
 import "../globalStyles/global.css"
 
-export const Movieresults = ({movie}) =>{
+export const Movieresults = ({movie, idArray}) =>{
+    // console.log("checkmovie......... " + checkMovie)
+    // console.log("movie......... " + movie)
+    // console.log("idArray on movie results ......... " + idArray)
 
     const [film, setFilm] = useState({
         id: '',
@@ -17,27 +21,14 @@ export const Movieresults = ({movie}) =>{
             e.preventDefault();
             console.log(film);
             addMovie(film)
-
         }
-
-        // const checkArrys = () =>{
-
-        //     for (let i = 0; i < checkMovie.length; i++){
-        //         for (let x = 0; x < movie.length; x++){
-        //             if (checkMovie[i].tmdbId == movie[x].id){
-        //                 console.log(`${i} and ${x} num. Test num is ${checkMovie[i].tmdbId}. Movie Num is ${movie[x].id}`)
-        //             }
-        //         }
-        //     }
-        // }
-    
-        // checkArrys()
-
+  
     return(
         <>
 
         <DivResults>
         {movie && movie.map((movie, index) => 
+            
             <DivCollapse key={index}>
                 <Collapsible trigger={movie.original_title}>
                     <DivContent>
@@ -51,8 +42,12 @@ export const Movieresults = ({movie}) =>{
                             <p>Synopsis:</p>
                             <p>{movie.overview}</p>
                             <p>Raiting: {movie.vote_average}</p>
-                            <ButtonDiv key={index}>
-                                    <ButtonAdd onClick={()=> setFilm({id: movie[index].id,title: movie[index].original_title, poster: movie[index].poster_path})}>Add to Collection</ButtonAdd>
+                            <ButtonDiv>
+                            {/* {console.log(JSON.stringify(movie.id)) && <p>test</p>} */}
+                            {/* this can be changed to an integer in schema  */}
+                            {idArray.includes(JSON.stringify(movie.id)) ? <InDbPara><p>In Database</p></InDbPara>
+                                                : <ButtonAdd onClick={()=> setFilm({id: movie.id,title: movie.original_title, poster: movie.poster_path})}>Add to Collection</ButtonAdd>
+                                                }
                             </ButtonDiv>
                         </DivInformation>
                         </form>
@@ -112,3 +107,45 @@ const ButtonAdd = styled.button`
     width: 200px;
     height: 50px;
 `
+const InDbPara = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 2px white solid;
+    width: 200px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: #016527;
+`
+
+
+
+        // const CheckDB = ({check}) => {
+        //     for (let i = 0; i < checkMovie.length; i++) {
+        //             if (checkMovie[i].tmdbId === check){
+        //                 return (
+        //                     <><p>{check} is in database</p></>
+        //                 )
+        //             } 
+        //         }
+        // }
+        //                       {/* {movie ? setCheck(movie.id)} */}
+        //                            {/* {!movie && <CheckDB  check={movie.id}/>} */}
+        // {checkMovie.find(x => (x.tmdbId !== movie.id)) ? <p>Movie in database</p> : <ButtonAdd onClick={()=> setFilm({id: movie[index].id,title: movie[index].original_title, poster: movie[index].poster_path})}>Add to Collection</ButtonAdd> }
+
+        // {/*                                 
+        //                         {movie.every(i => idArray.includes(obj => obj === i.id)) ? <p>movie in database</p>
+        //                                                 : <ButtonAdd onClick={()=> setFilm({id: movie[index].id,title: movie[index].original_title, poster: movie[index].poster_path})}>Add to Collection</ButtonAdd>} */}
+
+                // const CheckArray = () =>{
+        //     const temp = [""]
+            
+        //     for ( let i = 0; i < checkMovie.length; i++ ){
+        //             temp.push(checkMovie[i].tmdbId)
+        //     }
+        //     setCheck(temp)
+
+        // }
+        // CheckArray()
+                               
