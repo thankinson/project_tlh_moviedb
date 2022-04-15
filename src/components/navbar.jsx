@@ -76,23 +76,13 @@ const NavbarContainer = styled.nav`
         font-family: Arial, Helvetica, sans-serif;
         font-size: 1.25rem;
         color: white;
-        background-color: #1c1c1c;
+        background-color: #393939;
         border-top:solid 1px #707070;
         border-left:solid 1px #707070;
         border-right:solid 1px #707070;
         &.active {
-            background-color: #393939;
+            background-color: #131516;
         };
         border-top-left-radius: 1vw;
         border-top-right-radius: 1vw;
     `
-
-
-// const ActiveNavConstainer = styled(NaveTextContainer).attrs({
-//     activeClassName,
-// })`
-    
-//     &.${activeClassName}{
-//         background-color: #232323;
-//     }
-// `

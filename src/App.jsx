@@ -14,7 +14,6 @@ import { Login } from "./components/login";
 // css
 import "./globalStyles/global.css"
 
-
 const App = () => {
     const [user, setUser] = useState();
 
@@ -42,7 +41,6 @@ const App = () => {
                         </Routes>
                     </BrowserRouter>
     
-
 );
 
 };

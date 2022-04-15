@@ -1,9 +1,10 @@
 import { useState} from "react";
-import { addMovie } from "../utils";
 import Collapsible from "react-collapsible";
+// utils
+import { addMovie } from "../utils";
+
+// css
 import styled from "styled-components";
-
-
 import "../globalStyles/global.css"
 
 export const Movieresults = ({movie, idArray}) =>{
@@ -22,8 +23,6 @@ export const Movieresults = ({movie, idArray}) =>{
             addMovie(film)
         }
   
-       
-
     return(
         <>
 
@@ -113,11 +112,11 @@ const InDbPara = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border: 2px white dotted;
+    border: 2px white solid;
     width: 200px;
     height: 50px;
     border-radius: 5px;
-    background-color: #373737;
+    background-color: #016527;
 `
 
 

@@ -31,7 +31,6 @@ export const Login = ({user, setUser}) =>{
                         : "Login"
                     }
                 </h3>               
-                
 
                 <LogIn>
                      <LoginForm onSubmit={ submitHandler }>
@@ -42,7 +41,6 @@ export const Login = ({user, setUser}) =>{
                     </LoginForm>
                 </LogIn>
 
-                
                     <LogButton onClick={()=> setBool(!bool)}>
                         {!bool 
                         ? "Already Hav Account? Click Here" 
