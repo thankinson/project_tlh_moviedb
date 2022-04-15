@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
-import { useEffect } from "react";
 import { tokenLogin } from "../utils/index";
 
 // pages import
@@ -13,12 +12,14 @@ import styled from "styled-components";
 import "../globalStyles/global.css"
 const { REACT_APP_API_KEY } = process.env
 const dbConnection = process.env.REACT_APP_REST_API
+
+// main code
 export const SearchApi = ({user, setUser}) =>{
     const [movie, setMovie ] = useState([]);
     const [search, setSearch] = useState();
     const [checkMovie, setCheckMovie] = useState([]);
     const [idArray, setIdArray] = useState([])
-    console.log("temp 2222 ........ " + idArray);
+
     useEffect(() => {
         document.title = "HMD | Search";
       }, []);
@@ -50,22 +51,22 @@ export const SearchApi = ({user, setUser}) =>{
                     } catch(errorLog){
                         console.log(errorLog);
                     };       
-             };
+                };
              MyCollection();
 
         }, []); 
 
         const CheckArray = () =>{
             for ( let i = 0; i < checkMovie.length; i++ ){
-                    setIdArray(idArray => [...idArray, checkMovie[i].tmdbId]);
+                setIdArray(idArray => [...idArray, checkMovie[i].tmdbId]);
             };        
-        };
+            };
              
         const submitHandler = (e) => {
             e.preventDefault();
             CheckArray();
             MovieApi();
-        };
+            };
 
     return(
         <>
@@ -79,7 +80,7 @@ export const SearchApi = ({user, setUser}) =>{
                 <InputSearch placeholder="Search Movie Api" type="search" onChange={(e)=> setSearch(e.target.value)} />
                 <ButtonSearch>Search DB</ButtonSearch>
             </FormSearch>
-            <Movieresults movie={movie} idArray={idArray} />
+            <Movieresults movie={movie} idArray={idArray} setIdArray={setIdArray}/>
         </DivSearch>
         </PageContainer>
         </>

@@ -20,9 +20,10 @@ export const Movieresults = ({movie, idArray}) =>{
             e.preventDefault();
             console.log(film);
             addMovie(film)
-
         }
   
+       
+
     return(
         <>
 
@@ -44,8 +45,8 @@ export const Movieresults = ({movie, idArray}) =>{
                             <p>Raiting: {movie.vote_average}</p>
                             <ButtonDiv>
                             {/* {console.log(JSON.stringify(movie.id)) && <p>test</p>} */}
-
-                            {idArray.includes(JSON.stringify(movie.id)) ? <p>Movie in Database</p>
+                            {/* this can be changed to an integer in schema  */}
+                            {idArray.includes(JSON.stringify(movie.id)) ? <InDbPara><p>In Database</p></InDbPara>
                                                 : <ButtonAdd onClick={()=> setFilm({id: movie.id,title: movie.original_title, poster: movie.poster_path})}>Add to Collection</ButtonAdd>
                                                 }
                             </ButtonDiv>
@@ -107,7 +108,17 @@ const ButtonAdd = styled.button`
     width: 200px;
     height: 50px;
 `
-
+const InDbPara = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 2px white dotted;
+    width: 200px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: #373737;
+`
 
 
 
