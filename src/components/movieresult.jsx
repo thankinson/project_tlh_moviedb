@@ -112,11 +112,11 @@ const InDbPara = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border: 2px white solid;
+    border: 2px #016527 solid;
     width: 200px;
     height: 50px;
     border-radius: 5px;
-    background-color: #016527;
+    background-color: #323634;
 `
 
 
