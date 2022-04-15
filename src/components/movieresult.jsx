@@ -9,9 +9,8 @@ import "../globalStyles/global.css"
 export const Movieresults = ({movie, idArray}) =>{
     // console.log("checkmovie......... " + checkMovie)
     // console.log("movie......... " + movie)
-    // console.log("check......... " + check)
+    // console.log("idArray on movie results ......... " + idArray)
 
-    const [check, setCheck] = useState()
     const [film, setFilm] = useState({
         id: '',
         title: '',
@@ -24,22 +23,12 @@ export const Movieresults = ({movie, idArray}) =>{
 
         }
   
-        // const CheckArray = () =>{
-        //     const temp = [""]
-            
-        //     for ( let i = 0; i < checkMovie.length; i++ ){
-        //             temp.push(checkMovie[i].tmdbId)
-        //     }
-        //     setCheck(temp)
-
-        // }
-        // CheckArray()
-
     return(
         <>
 
         <DivResults>
         {movie && movie.map((movie, index) => 
+            
             <DivCollapse key={index}>
                 <Collapsible trigger={movie.original_title}>
                     <DivContent>
@@ -54,11 +43,11 @@ export const Movieresults = ({movie, idArray}) =>{
                             <p>{movie.overview}</p>
                             <p>Raiting: {movie.vote_average}</p>
                             <ButtonDiv>
-                                
-                               {idArray.includes(movie) ? <p>movie in database</p>
-                                                        : <ButtonAdd onClick={()=> setFilm({id: movie[index].id,title: movie[index].original_title, poster: movie[index].poster_path})}>Add to Collection</ButtonAdd>
-                                                        }
-                                  {/* <ButtonAdd onClick={()=> setFilm({id: movie[index].id,title: movie[index].original_title, poster: movie[index].poster_path})}>Add to Collection</ButtonAdd> */}
+                            {/* {console.log(JSON.stringify(movie.id)) && <p>test</p>} */}
+
+                            {idArray.includes(JSON.stringify(movie.id)) ? <p>Movie in Database</p>
+                                                : <ButtonAdd onClick={()=> setFilm({id: movie.id,title: movie.original_title, poster: movie.poster_path})}>Add to Collection</ButtonAdd>
+                                                }
                             </ButtonDiv>
                         </DivInformation>
                         </form>
@@ -134,3 +123,19 @@ const ButtonAdd = styled.button`
         //                       {/* {movie ? setCheck(movie.id)} */}
         //                            {/* {!movie && <CheckDB  check={movie.id}/>} */}
         // {checkMovie.find(x => (x.tmdbId !== movie.id)) ? <p>Movie in database</p> : <ButtonAdd onClick={()=> setFilm({id: movie[index].id,title: movie[index].original_title, poster: movie[index].poster_path})}>Add to Collection</ButtonAdd> }
+
+        // {/*                                 
+        //                         {movie.every(i => idArray.includes(obj => obj === i.id)) ? <p>movie in database</p>
+        //                                                 : <ButtonAdd onClick={()=> setFilm({id: movie[index].id,title: movie[index].original_title, poster: movie[index].poster_path})}>Add to Collection</ButtonAdd>} */}
+
+                // const CheckArray = () =>{
+        //     const temp = [""]
+            
+        //     for ( let i = 0; i < checkMovie.length; i++ ){
+        //             temp.push(checkMovie[i].tmdbId)
+        //     }
+        //     setCheck(temp)
+
+        // }
+        // CheckArray()
+                               
