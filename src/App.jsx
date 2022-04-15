@@ -30,9 +30,9 @@ const App = () => {
          
                             <Route path="/" element={<Login user={user} setUser={setUser} />} />
 
-                            <Route path="/home" element={<Home user={user} setUser={setUser}/>} />
+                            <Route path="/home" element={<Home user={user} setUser={setUser} />} />
 
-                            <Route path="/search" element={<SearchApi user={user} setUser={setUser}/>} />
+                            <Route path="/search" element={<SearchApi user={user} setUser={setUser} />} />
 
                             <Route path="/list" element={< MoviesList user={user} setUser={setUser} />} />
 

@@ -13,6 +13,7 @@ import "../globalStyles/global.css"
 const { REACT_APP_API_KEY } = process.env
 const dbConnection = process.env.REACT_APP_REST_API
 
+
 // main code
 export const SearchApi = ({user, setUser}) =>{
     const [movie, setMovie ] = useState([]);
@@ -74,7 +75,7 @@ export const SearchApi = ({user, setUser}) =>{
         {(!user && localStorage.key('myToken')) && async function(setUser){ await tokenLogin(setUser) } }
         <PageContainer>
         <Header user={user}/>
-        <Navbar setUser={setUser}/>
+        <Navbar setUser={setUser} />
         <DivSearch>
             <FormSearch onSubmit={submitHandler }>
                 <InputSearch placeholder="Search Movie Api" type="search" onChange={(e)=> setSearch(e.target.value)} />

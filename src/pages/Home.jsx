@@ -28,7 +28,7 @@ export const Home = ({user, setUser}) =>{
             {(!user && !localStorage.key('myToken')) && <Navigate to="/"/>}
             {(!user && localStorage.key('myToken')) && async function(setUser){ await tokenLogin(setUser) } }
             <Header user={user} />
-            <Navbar setUser={setUser}/>
+            <Navbar setUser={setUser} />
             <HomeContentDiv>
             <AboutContaciner>
                 <AboutSiteTitle>
