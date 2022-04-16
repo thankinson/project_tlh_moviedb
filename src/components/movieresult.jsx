@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { React, useState} from "react";
 import Collapsible from "react-collapsible";
 // utils
 import { addMovie } from "../utils";
@@ -30,7 +30,7 @@ export const Movieresults = ({movie, idArray}) =>{
         {movie && movie.map((movie, index) => 
             
             <DivCollapse key={index}>
-                <Collapsible trigger={movie.original_title}>
+                <Collapsible  trigger={movie.original_title}>
                     <DivContent>
                         <DivPoster>
                             <ImgPoster src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={`${movie.original_title} Poster`} />
@@ -52,7 +52,7 @@ export const Movieresults = ({movie, idArray}) =>{
                         </DivInformation>
                         </form>
                     </DivContent>                 
-                </Collapsible>
+                </Collapsible >
             </DivCollapse>)}
         </DivResults>
         
@@ -118,9 +118,6 @@ const InDbPara = styled.div`
     border-radius: 5px;
     background-color: #323634;
 `
-
-
-
         // const CheckDB = ({check}) => {
         //     for (let i = 0; i < checkMovie.length; i++) {
         //             if (checkMovie[i].tmdbId === check){

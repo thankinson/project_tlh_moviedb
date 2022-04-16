@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 
 export const Footer = () =>{
@@ -23,6 +24,11 @@ const FooterDiv = styled.div`
     
     /* background-color: rgb(51, 51, 61);
     box-shadow: 0px 0px 10px 0px white; */
+
+    
+  @media (max-width: 700px){
+    display: none;
+  }
 `;
 const HyperLink = styled.a`
     text-decoration: none;

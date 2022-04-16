@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { React, useEffect, useState } from "react";
 // Styled componants
 import styled from "styled-components";
 const dbConnection = process.env.REACT_APP_REST_API
@@ -38,4 +38,8 @@ const PosterDiv = styled.div`
 
 const ImgPoster = styled.img`
     max-width: 250px;
+
+    @media (max-width: 700px){
+        max-width: 125px;
+    }
 `
