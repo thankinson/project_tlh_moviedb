@@ -54,14 +54,20 @@ export const Navbar = ({setUser}) => {
     return (
         <>
             <NavbarContainer showNav={showNav}>
+                <BurgerMenueDiv>
+                    <BurgerMenue onClick={() => {
+                        setShowNav((curr) => !curr)
+                        }}
+                        >
+                        {/* {showNav ? <> &#9781; </> : <> &#8801; </> } */}
+                        <> &#8801; </>
+                    </BurgerMenue>
+                    {/* {!showNav && <PageTitle><h3>Home Movie Database</h3></PageTitle>} */}
+                    <PageTitle><h3>Home Movie Database</h3></PageTitle>
+                </BurgerMenueDiv>
+                
+                
             
-            <BurgerMenue onClick={() => {
-                    setShowNav((curr) => !curr)
-                    }}
-                    >
-                       {showNav ? <> &#9781; </> : <> &#8801; </> }
-                </BurgerMenue>
-                {!showNav && <PageTitle><h3>Home Movie Database</h3></PageTitle>}
             <NavbarLinks>
              <PageLinks />
 
@@ -82,13 +88,14 @@ const NavbarContainer = styled.nav`
     flex-direction: row;
     width: 100%;
     /* height: 5vh; */
-    height: ${(props) => (props.showNav ? "150px" : "5vh")};
+    height: ${(props) => (props.showNav ? "35vh" : "5vh")};
     background-color: #232323;
     align-items: center;
 
     @media (max-width: 700px){
         min-height: 50px;
-        max-height: 100px;
+        /* max-height: 100px; */
+        flex-direction: column;
         /* justify-content: center;
         align-items: center; */
         
@@ -97,6 +104,10 @@ const NavbarContainer = styled.nav`
 
     const NavbarLinks = styled(NavbarContainer)`
     justify-content: center;
+
+        @media (max-width: 700px){
+            display: none;
+        }
     `;
 
     const NaveTextContainer = styled.div`
@@ -133,13 +144,28 @@ const NavbarContainer = styled.nav`
     `
         const StyledNavLinkMobile = styled(NavLink)`
             display: flex;
-            width: 80vw;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             font-family: Arial, Helvetica, sans-serif;
             font-size: 1.25rem;
             color: white;
+            background-color: #181a1b;
+            box-shadow: 0px 0px 1px 0px ;
+            width: 90%;
+            height: 40px;
+            margin-bottom: 10px;
             /* justify-content: center;
             align-items: center; */
         `
+
+    const BurgerMenueDiv = styled.div`
+        @media (max-width: 700px){
+            display: flex;
+            flex-direction: row;
+            width: 100vw;
+        }
+    `
     const BurgerMenue = styled.button`
         width: 70px;
         height: 50px;
@@ -153,23 +179,28 @@ const NavbarContainer = styled.nav`
             display: none;
         }
     `
-    const NavSmallContainer = styled.div`
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        @media (min-width: 700px){
-            display: none;
-        }
-    `
 
     const PageTitle = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
         text-align: center;
+        width: 200px;
+        font-size: 15px;
 
         @media (min-width: 700px){
             display: none;
         }
     `
+    const NavSmallContainer = styled.div`
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+
+        @media (min-width: 700px){
+            display: none;
+        }
+    `
+
