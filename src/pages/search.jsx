@@ -99,6 +99,10 @@ const PageContainer = styled.div`
     align-items: flex-start;
     width: 100vw;
     height: 100vh;
+
+    @media (max-width: 700px){
+        height: 100%;
+    }
 `
 
 const DivSearch = styled.div`
@@ -107,6 +111,10 @@ const DivSearch = styled.div`
     display: flex;
     flex-direction: column;
     /* border: solid 1px green; */
+
+    @media (max-width: 700px){
+        height: 100%;
+    }
 
 `
 
@@ -129,6 +137,10 @@ const InputSearch = styled.input`
     text-align: center;
     background-color:  #202324;
     color: white;
+
+    @media (max-width: 700px){
+        width: 200px;
+    }
 `
 
 const ButtonSearch = styled.button`
@@ -138,4 +150,8 @@ const ButtonSearch = styled.button`
     margin-left: 1vw;
     background-color:  #202324;
     color: white;
+
+    @media (max-width: 700px){
+        width: 100px;
+    }
 `

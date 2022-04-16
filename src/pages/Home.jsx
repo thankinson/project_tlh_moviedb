@@ -56,6 +56,10 @@ const PageContainer = styled.div`
     flex-direction: column;
     width: 100vw;
     height: 100vh;
+
+    @media (max-width: 700px){
+        height: 100%;
+    }
 `
 const HomeContentDiv = styled.div`
     display: flex;
@@ -67,18 +71,30 @@ const HomeContentDiv = styled.div`
 const AboutContaciner = styled.div`
     width: 50%;
     height: 100%;
+
+    @media (max-width: 700px){
+        width: 90%;
+    }
 `
 const AboutSiteTitle = styled.div`
     width: 100%;
     text-align: center;
 `
 const AboutSiteInfo = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     text-align: center;
     
 `
 const ImagesSettings = styled.img`
     max-width: 500px;
+
+    @media (max-width: 700px){
+    width: 300px;
+    }
 `
 
 // const HyperLink = styled.a`

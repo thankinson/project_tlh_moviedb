@@ -114,7 +114,7 @@ const NavbarContainer = styled.nav`
     const StyledNavLink = styled(NavLink)`
         display: flex;
         width: 9vw;
-        /* height: 4vh; */
+        height: 5vh;
         justify-content: center;
         align-items: center;
         text-decoration: none;
