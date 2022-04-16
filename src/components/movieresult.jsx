@@ -41,7 +41,7 @@ export const Movieresults = ({movie, idArray}) =>{
                                 <MovieInfoDiv>
                                     <p>{movie.original_title}</p>
                                     <p>{movie.release_date}</p>
-                                    <p>{movie.overview}</p>
+                                    <OverviewPara>{movie.overview}</OverviewPara>
                                         <ButtonDiv>
                                         <form onSubmit={submitHandler}>
                                                 {idArray.includes(JSON.stringify(movie.id)) 
@@ -83,6 +83,10 @@ const MovieList = styled.ul`
     width: 50vw;
     list-style: none;
     padding: 0;
+
+    @media (max-width: 700px){
+        width: 90%;
+    }
    
 `;
 const MovieDropdownButton = styled.button`
@@ -120,16 +124,35 @@ const ContentDiv = styled.div`
     font-size: 0.9em;
     color: #2e444e;
     background-color: #2c3543;
+
+    @media (max-width: 700px){
+        flex-wrap: wrap;
+    }
     
 `;
 const PosterDiv = styled.div`
+    @media (max-width: 700px){
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
 `;
 const MovieInfoDiv = styled.div`
 margin-left: 20px;
 font-size: 1.5em;
+
+    @media (max-width: 700px){
+        text-align: center;
+        width: 100%;
+    }
 `;
 const ImgPoster = styled.img`
     max-width: 300px;
+
+    @media (max-width: 700px){
+        max-width: 200px;
+    }
 `;
 const ButtonDiv = styled.div`
     display: flex;
@@ -151,3 +174,9 @@ const InDbPara = styled.div`
     border-radius: 5px;
     background-color: #323634;
 `;
+
+const OverviewPara = styled.p`
+    @media (max-width: 700px){
+   display: none;
+    }
+`
