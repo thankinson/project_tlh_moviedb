@@ -1,5 +1,5 @@
+import React from "react";
 import styled from "styled-components";
-
 
 export const Header =({user})=>{
     return (
@@ -32,6 +32,10 @@ const Banner = styled.div`
   padding-right: 10px;
   background-color: goldenrod;
   box-shadow: 0px 0px 10px 0px white; */
+
+  @media (max-width: 700px){
+    display: none;
+  }
 `
 const TitleDiv = styled.div`
   display: flex;

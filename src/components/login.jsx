@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { React, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { createUser, login } from "../utils";
 import styled from "styled-components";
@@ -21,7 +21,7 @@ export const Login = ({user, setUser}) =>{
     }
 
     return (
-            <>
+            <PageContainer>
             {user && <Navigate to="/home" />}
             <LoginContainer>
                 {user && <Navigate to="/home" />}
@@ -31,7 +31,6 @@ export const Login = ({user, setUser}) =>{
                         : "Login"
                     }
                 </h3>               
-                
 
                 <LogIn>
                      <LoginForm onSubmit={ submitHandler }>
@@ -42,17 +41,16 @@ export const Login = ({user, setUser}) =>{
                     </LoginForm>
                 </LogIn>
 
-                
                     <LogButton onClick={()=> setBool(!bool)}>
                         {!bool 
-                        ? "Already Hav Account? Click Here" 
+                        ? "Already Have Account? Click Here" 
                         : "No account? Click Here" 
                         }
                     </LogButton>
                     
 
             </LoginContainer>
-        </>
+        </PageContainer>
 
     )
     
@@ -60,6 +58,15 @@ export const Login = ({user, setUser}) =>{
 
 // ##########################################################
 // styled componebts here
+
+const PageContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+`
 const LoginContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -70,10 +77,20 @@ const LoginContainer = styled.div`
     border-radius: 1vw;
     border: solid 1px;
     background-color: #000000;
+
+    @media (max-width: 700px){
+        width: 90vw;
+        border-radius: 10px;
+    }
+
    `
     const LogIn = styled.div`
         width: 20vw;
         height: 30vh;
+        
+    @media (max-width: 700px){
+        width: 100%;
+    }
     `
     const LoginForm = styled.form`
         display: flex;
@@ -82,6 +99,10 @@ const LoginContainer = styled.div`
         align-items: center;
         min-width: 20vw;
         min-height: 30vh;
+
+        @media (max-width: 700px){
+        width: 100%;
+    }
     `
     const LogButton = styled.button`
         width: 14vw;
@@ -91,6 +112,11 @@ const LoginContainer = styled.div`
         border: solid 1px rgb(58, 58, 58);
         background-color: #131516f6;
         color: aliceblue;
+
+        @media (max-width: 700px){
+        width: 80%;
+    }
+        
     `
     const TextInput = styled.input`
         width: 14vw;
@@ -100,4 +126,8 @@ const LoginContainer = styled.div`
         border: solid 1px rgb(58, 58, 58);
         background-color: #131516f6;
         color: aliceblue;
+
+        @media (max-width: 700px){
+        width: 80%;
+    }
     `

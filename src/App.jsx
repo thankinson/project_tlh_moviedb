@@ -1,10 +1,18 @@
-import { useState, useEffect  } from "react";
+import { React ,useState, useEffect  } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Home } from "./pages/Home";
-import { Login } from "./components/login";
-import { SearchApi } from "./pages/search";
 import { tokenLogin } from './utils';
-// import styled from "styled-components";
+
+// Pages
+import { Home } from "./pages/Home";
+import { SearchApi } from "./pages/search";
+import { MoviesList } from "./pages/listMovies";
+import { TestPage } from "./pages/testpage";
+
+//componatns 
+import { Login } from "./components/login";
+
+// css
+import "./globalStyles/global.css"
 
 const App = () => {
     const [user, setUser] = useState();
@@ -22,14 +30,17 @@ const App = () => {
          
                             <Route path="/" element={<Login user={user} setUser={setUser} />} />
 
-                            <Route path="/home" element={<Home user={user} setUser={setUser}/>} />
+                            <Route path="/home" element={<Home user={user} setUser={setUser} />} />
 
-                            <Route path="/search" element={<SearchApi user={user} setUser={setUser}/>} />
+                            <Route path="/search" element={<SearchApi user={user} setUser={setUser} />} />
+
+                            <Route path="/list" element={< MoviesList user={user} setUser={setUser} />} />
+
+                            <Route path="/test" element={< TestPage user={user} setUser={setUser} />} />
 
                         </Routes>
                     </BrowserRouter>
     
-
 );
 
 };

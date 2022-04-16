@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { React, useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
-import { useEffect } from "react";
 import { tokenLogin } from "../utils/index";
 
 // pages import
@@ -12,10 +11,15 @@ import { Movieresults } from "../components/movieresult";
 import styled from "styled-components";
 import "../globalStyles/global.css"
 const { REACT_APP_API_KEY } = process.env
+const dbConnection = process.env.REACT_APP_REST_API
 
+
+// main code
 export const SearchApi = ({user, setUser}) =>{
-    const [movie, setMovie ] = useState([])
-    const [search, setSearch] = useState()
+    const [movie, setMovie ] = useState([]);
+    const [search, setSearch] = useState();
+    const [checkMovie, setCheckMovie] = useState([]);
+    const [idArray, setIdArray] = useState([])
 
     useEffect(() => {
         document.title = "HMD | Search";
@@ -27,22 +31,43 @@ export const SearchApi = ({user, setUser}) =>{
         tokenLogin(setUser);
       }
 
-    const MovieApi = async () =>{
-        try {     
-            const response = await fetch(`${REACT_APP_API_KEY}${search}`);
-            const data = await response.json();
-            console.log(data)
-            setMovie(data.results)
-            } catch(errorLog){
-                console.log(errorLog)
-            }
-        };
-        
+        const MovieApi = async () =>{
+            try {     
+                const response = await fetch(`${REACT_APP_API_KEY}${search}`);
+                const data = await response.json();
+                console.log(data);
+                setMovie(data.results);
+                } catch(errorLog){
+                    console.log(errorLog);
+                }
+            };
+
+        useEffect(()=> {
+            const MyCollection = async () => {
+                try {     
+                    const response = await fetch(`${dbConnection}movie`);
+                    const data = await response.json();
+                    console.log(data.allMovie);
+                    setCheckMovie(data.allMovie);
+                    } catch(errorLog){
+                        console.log(errorLog);
+                    };       
+                };
+             MyCollection();
+
+        }, []); 
+
+        const CheckArray = () =>{
+            for ( let i = 0; i < checkMovie.length; i++ ){
+                setIdArray(idArray => [...idArray, checkMovie[i].tmdbId]);
+            };        
+            };
+             
         const submitHandler = (e) => {
             e.preventDefault();
-            MovieApi()
-        };
-
+            CheckArray();
+            MovieApi();
+            };
 
     return(
         <>
@@ -50,16 +75,14 @@ export const SearchApi = ({user, setUser}) =>{
         {(!user && localStorage.key('myToken')) && async function(setUser){ await tokenLogin(setUser) } }
         <PageContainer>
         <Header user={user}/>
-        <Navbar setUser={setUser}/>
+        <Navbar setUser={setUser} />
         <DivSearch>
             <FormSearch onSubmit={submitHandler }>
                 <InputSearch placeholder="Search Movie Api" type="search" onChange={(e)=> setSearch(e.target.value)} />
                 <ButtonSearch>Search DB</ButtonSearch>
             </FormSearch>
-            {/* <MoviesList /> */}
-            <Movieresults movie={movie} />
+            <Movieresults movie={movie} idArray={idArray} setIdArray={setIdArray}/>
         </DivSearch>
-        
         </PageContainer>
         </>
 
@@ -76,6 +99,10 @@ const PageContainer = styled.div`
     align-items: flex-start;
     width: 100vw;
     height: 100vh;
+
+    @media (max-width: 700px){
+        height: 100%;
+    }
 `
 
 const DivSearch = styled.div`
@@ -84,6 +111,10 @@ const DivSearch = styled.div`
     display: flex;
     flex-direction: column;
     /* border: solid 1px green; */
+
+    @media (max-width: 700px){
+        height: 100%;
+    }
 
 `
 
@@ -106,6 +137,10 @@ const InputSearch = styled.input`
     text-align: center;
     background-color:  #202324;
     color: white;
+
+    @media (max-width: 700px){
+        width: 200px;
+    }
 `
 
 const ButtonSearch = styled.button`
@@ -115,4 +150,8 @@ const ButtonSearch = styled.button`
     margin-left: 1vw;
     background-color:  #202324;
     color: white;
+
+    @media (max-width: 700px){
+        width: 100px;
+    }
 `

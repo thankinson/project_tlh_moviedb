@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { React, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 
 // Pages
@@ -28,7 +28,7 @@ export const Home = ({user, setUser}) =>{
             {(!user && !localStorage.key('myToken')) && <Navigate to="/"/>}
             {(!user && localStorage.key('myToken')) && async function(setUser){ await tokenLogin(setUser) } }
             <Header user={user} />
-            <Navbar setUser={setUser}/>
+            <Navbar setUser={setUser} />
             <HomeContentDiv>
             <AboutContaciner>
                 <AboutSiteTitle>
@@ -36,13 +36,11 @@ export const Home = ({user, setUser}) =>{
                 </AboutSiteTitle>
                 <AboutSiteInfo>
                     <p>The Home Movie Database is designed to be used as your personal movie collection database. </p>
-               
                     <p>Search The Movie Database API for a film you want to add to your collection. </p>
                     <ImagesSettings src={SearchImg} alt="search bar " />
                     <p>Simply Click on the film you have searched for and click Add and it will be stored in your collection</p>
                     <ImagesSettings src={ FoundMovie } alt="drop down window" />
                     <p>To View your movies open the "My Movies" tab and scroll through your films</p>
-
                 </AboutSiteInfo>
             </AboutContaciner>
             </HomeContentDiv>
@@ -58,6 +56,10 @@ const PageContainer = styled.div`
     flex-direction: column;
     width: 100vw;
     height: 100vh;
+
+    @media (max-width: 700px){
+        height: 100%;
+    }
 `
 const HomeContentDiv = styled.div`
     display: flex;
@@ -69,18 +71,30 @@ const HomeContentDiv = styled.div`
 const AboutContaciner = styled.div`
     width: 50%;
     height: 100%;
+
+    @media (max-width: 700px){
+        width: 90%;
+    }
 `
 const AboutSiteTitle = styled.div`
     width: 100%;
     text-align: center;
 `
 const AboutSiteInfo = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     text-align: center;
     
 `
 const ImagesSettings = styled.img`
     max-width: 500px;
+
+    @media (max-width: 700px){
+    width: 300px;
+    }
 `
 
 // const HyperLink = styled.a`
