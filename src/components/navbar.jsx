@@ -64,6 +64,7 @@ export const Navbar = ({setUser}) => {
                     </BurgerMenue>
                     {/* {!showNav && <PageTitle><h3>Home Movie Database</h3></PageTitle>} */}
                     <PageTitle><h3>Home Movie Database</h3></PageTitle>
+                    <BurgerMenue></BurgerMenue>
                 </BurgerMenueDiv>
                 
                 
@@ -163,12 +164,13 @@ const NavbarContainer = styled.nav`
         @media (max-width: 700px){
             display: flex;
             flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
             width: 100vw;
         }
     `
     const BurgerMenue = styled.button`
-        width: 70px;
-        height: 50px;
+        width: 50px;
         background: none;
         border: none;
         color: white;
