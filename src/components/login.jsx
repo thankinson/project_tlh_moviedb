@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { React, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { createUser, login } from "../utils";
 import styled from "styled-components";
@@ -77,10 +77,20 @@ const LoginContainer = styled.div`
     border-radius: 1vw;
     border: solid 1px;
     background-color: #000000;
+
+    @media (max-width: 700px){
+        width: 90vw;
+        border-radius: 10px;
+    }
+
    `
     const LogIn = styled.div`
         width: 20vw;
         height: 30vh;
+        
+    @media (max-width: 700px){
+        width: 100%;
+    }
     `
     const LoginForm = styled.form`
         display: flex;
@@ -89,6 +99,10 @@ const LoginContainer = styled.div`
         align-items: center;
         min-width: 20vw;
         min-height: 30vh;
+
+        @media (max-width: 700px){
+        width: 100%;
+    }
     `
     const LogButton = styled.button`
         width: 14vw;
@@ -98,6 +112,11 @@ const LoginContainer = styled.div`
         border: solid 1px rgb(58, 58, 58);
         background-color: #131516f6;
         color: aliceblue;
+
+        @media (max-width: 700px){
+        width: 80%;
+    }
+        
     `
     const TextInput = styled.input`
         width: 14vw;
@@ -107,4 +126,8 @@ const LoginContainer = styled.div`
         border: solid 1px rgb(58, 58, 58);
         background-color: #131516f6;
         color: aliceblue;
+
+        @media (max-width: 700px){
+        width: 80%;
+    }
     `
