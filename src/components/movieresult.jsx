@@ -64,7 +64,7 @@ export const Movieresults = ({movie, checkMovie, setCheckMovie}) =>{
                         <p>{movie.release_date}</p>
                         <OverviewPara>{movie.overview}</OverviewPara>
                             <ButtonDiv>
-                            <form onSubmit={submitHandler}>
+                            <Form onSubmit={submitHandler}>
                                     {idArray.includes(JSON.stringify(movie.id)) 
                                         ? <InDbPara><p>In Database</p></InDbPara>
                                         : <ButtonAdd onClick={()=> 
@@ -75,7 +75,7 @@ export const Movieresults = ({movie, checkMovie, setCheckMovie}) =>{
                                         Add to Collection
                                         </ButtonAdd>
                             }
-                            </form>
+                            </Form>
                             </ButtonDiv>
                     </MovieInfoDiv>
                 </ContentDiv>
@@ -171,6 +171,12 @@ const ImgPoster = styled.img`
         max-width: 200px;
     }
 `;
+
+const Form = styled.form`
+    @media (max-width: 700px) {
+        width: 100%;
+    }
+`
 const ButtonDiv = styled.div`
     display: flex;
     flex-direction: row;
@@ -179,6 +185,10 @@ const ButtonDiv = styled.div`
 const ButtonAdd = styled.button`
     width: 200px;
     height: 50px;
+
+    @media (max-width: 700px){
+        width: 100%;
+    }
 `;
 const InDbPara = styled.div`
     display: flex;
