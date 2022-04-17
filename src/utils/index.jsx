@@ -107,10 +107,10 @@ export const addMovie = async (film) => {
                 poster: film.poster,
             }),
         });
-        const data = await response.JSON()
-        if (!data.msg) {
-            throw new Error(data.err)
-        }
+        // const data = await response.JSON()
+        // if (!data.msg) {
+        //     throw new Error(data.err)
+        // }
     } catch (error) {
         console.log(error);
     }

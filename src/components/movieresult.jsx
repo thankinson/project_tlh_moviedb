@@ -6,67 +6,86 @@ import { addMovie } from "../utils";
 
 // css
 import styled from "styled-components";
-import "../globalStyles/global.css"
+import "../globalStyles/global.css";
 
-export const Movieresults = ({movie, idArray}) =>{
+const dbConnection = process.env.REACT_APP_REST_API
+
+export const Movieresults = ({movie, checkMovie, setCheckMovie}) =>{
     const [openItemIndex, setOpenItemIndex] = useState(undefined);
-
+    const [idArray, setIdArray] = useState([])
+ 
     const [film, setFilm] = useState({
         id: '',
         title: '',
-        poster: ''})
- 
-        const submitHandler = (e) => {
+        poster: ''});
+
+        const MyCollection = async () => {
+            try {     
+                const response = await fetch(`${dbConnection}movie`);
+                const data = await response.json();
+                console.log(data.allMovie);
+                setCheckMovie(data.allMovie);
+                } catch(errorLog){
+                    console.log(errorLog);
+                };       
+            };
+
+        const CheckArray = () =>{
+            for ( let i = 0; i < checkMovie.length; i++ ){
+                setIdArray(idArray => [...idArray, checkMovie[i].tmdbId]);
+            };        
+            };
+        
+        const submitHandler =  async (e) => {
             e.preventDefault();
-            console.log(film);
-            addMovie(film)
-        }
+            await addMovie(film)
+            MyCollection()
+        };
 
         function toggle(id) {
             setOpenItemIndex(openItemIndex === id ? undefined : id);
-          }
+            CheckArray()
+          };
   
     return(
-        <>
-            <PageContainerDiv>
-            <MovieList>
-                {movie && movie.map((movie, index) => 
-                    <li key={index}>
-                        <MovieDropdownButton type="button" onClick={()=> toggle(movie)}>{movie.original_title}</MovieDropdownButton>
-                        <C isOpen={openItemIndex === movie}>
-                            <ContentDiv>
-                                <PosterDiv>
-                                    <ImgPoster src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={`${movie.original_title} Poster`} />
-                                </PosterDiv>
-                                <MovieInfoDiv>
-                                    <p>{movie.original_title}</p>
-                                    <p>{movie.release_date}</p>
-                                    <OverviewPara>{movie.overview}</OverviewPara>
-                                        <ButtonDiv>
-                                        <form onSubmit={submitHandler}>
-                                                {idArray.includes(JSON.stringify(movie.id)) 
-                                                    ? <InDbPara><p>In Database</p></InDbPara>
-                                                    : <ButtonAdd onClick={()=> 
-                                                            setFilm({id: movie.id,
-                                                                    title: movie.original_title, 
-                                                                    poster: movie.poster_path})
-                                                                    }>
-                                                                Add to Collection
-                                                        </ButtonAdd>
-                                        }
-                                            </form>
-                                        </ButtonDiv>
-                                </MovieInfoDiv>
-                            </ContentDiv>
-                        </C>
-                    </li>
-                )}
+    <>
+        <PageContainerDiv>
+        <MovieList>
+            {movie && movie.map((movie, index) => 
+            <li key={index}>
+                <MovieDropdownButton type="button" onClick={()=> toggle(movie)}>{movie.original_title}</MovieDropdownButton>
+                <C isOpen={openItemIndex === movie}>
+                <ContentDiv>
+                    <PosterDiv>
+                        <ImgPoster src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt={`${movie.original_title} Poster`} />
+                    </PosterDiv>
+                    <MovieInfoDiv>
+                        <p>{movie.original_title}</p>
+                        <p>{movie.release_date}</p>
+                        <OverviewPara>{movie.overview}</OverviewPara>
+                            <ButtonDiv>
+                            <form onSubmit={submitHandler}>
+                                    {idArray.includes(JSON.stringify(movie.id)) 
+                                        ? <InDbPara><p>In Database</p></InDbPara>
+                                        : <ButtonAdd onClick={()=> 
+                                        setFilm({id: movie.id,
+                                                title: movie.original_title, 
+                                                poster: movie.poster_path})
+                                                }>
+                                        Add to Collection
+                                        </ButtonAdd>
+                            }
+                            </form>
+                            </ButtonDiv>
+                    </MovieInfoDiv>
+                </ContentDiv>
+                </C>
+            </li>
+            )}
 
-            </MovieList>
-            </PageContainerDiv>
-        
-        </>
-
+        </MovieList>
+        </PageContainerDiv>
+    </>
     )
 };
 
@@ -87,7 +106,6 @@ const MovieList = styled.ul`
     @media (max-width: 700px){
         width: 90%;
     }
-   
 `;
 const MovieDropdownButton = styled.button`
       transition: all 0.5s ease-in-out;
@@ -115,7 +133,6 @@ const MovieDropdownButton = styled.button`
 const C = styled(Collapse)`
   transition: height 250ms cubic-bezier(0.4, 0, 0.2, 1);
 `;
-
 const ContentDiv = styled.div`
     display: flex;
     flex-direction: row;
@@ -179,4 +196,4 @@ const OverviewPara = styled.p`
     @media (max-width: 700px){
    display: none;
     }
-`
+`;
