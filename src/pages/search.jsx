@@ -19,7 +19,7 @@ export const SearchApi = ({user, setUser}) =>{
     const [movie, setMovie ] = useState([]);
     const [search, setSearch] = useState();
     const [checkMovie, setCheckMovie] = useState([]);
-    const [idArray, setIdArray] = useState([])
+    // const [idArray, setIdArray] = useState([])
 
     useEffect(() => {
         document.title = "HMD | Search";
@@ -57,15 +57,15 @@ export const SearchApi = ({user, setUser}) =>{
 
         }, []); 
 
-        const CheckArray = () =>{
-            for ( let i = 0; i < checkMovie.length; i++ ){
-                setIdArray(idArray => [...idArray, checkMovie[i].tmdbId]);
-            };        
-            };
+        // const CheckArray = () =>{
+        //     for ( let i = 0; i < checkMovie.length; i++ ){
+        //         setIdArray(idArray => [...idArray, checkMovie[i].tmdbId]);
+        //     };        
+        //     };
              
         const submitHandler = (e) => {
             e.preventDefault();
-            CheckArray();
+            // CheckArray();
             MovieApi();
             };
 
@@ -81,7 +81,7 @@ export const SearchApi = ({user, setUser}) =>{
                 <InputSearch placeholder="Search Movie Api" type="search" onChange={(e)=> setSearch(e.target.value)} />
                 <ButtonSearch>Search DB</ButtonSearch>
             </FormSearch>
-            <Movieresults movie={movie} idArray={idArray} setIdArray={setIdArray}/>
+            <Movieresults movie={movie} checkMovie={checkMovie} setCheckMovie={setCheckMovie}/* idArray={idArray} setIdArray={setIdArray} */ />
         </DivSearch>
         </PageContainer>
         </>
