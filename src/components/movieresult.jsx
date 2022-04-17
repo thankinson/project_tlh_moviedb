@@ -66,7 +66,7 @@ export const Movieresults = ({movie, checkMovie, setCheckMovie}) =>{
                             <ButtonDiv>
                             <Form onSubmit={submitHandler}>
                                     {idArray.includes(JSON.stringify(movie.id)) 
-                                        ? <InDbPara><p>In Database</p></InDbPara>
+                                        ? <InDbPara><p>Already in colection</p></InDbPara>
                                         : <ButtonAdd onClick={()=> 
                                         setFilm({id: movie.id,
                                                 title: movie.original_title, 
@@ -105,7 +105,7 @@ const MovieList = styled.ul`
 
     @media (max-width: 700px){
         width: 90%;
-    }
+    };
 `;
 const MovieDropdownButton = styled.button`
       transition: all 0.5s ease-in-out;
@@ -122,13 +122,13 @@ const MovieDropdownButton = styled.button`
   @media screen and (max-width: 1000px) {
     font-size: 0.9em;
     max-height: 5em;
-  }
+  };
 
   &:hover {
     color: white;
     background-color: #5a7077;
     transition: 200ms;
-  }
+  };
 `;
 const C = styled(Collapse)`
   transition: height 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -144,7 +144,7 @@ const ContentDiv = styled.div`
 
     @media (max-width: 700px){
         flex-wrap: wrap;
-    }
+    };
     
 `;
 const PosterDiv = styled.div`
@@ -153,7 +153,7 @@ const PosterDiv = styled.div`
         flex-direction: column;
         align-items: center;
         width: 100%;
-    }
+    };
 `;
 const MovieInfoDiv = styled.div`
 margin-left: 20px;
@@ -162,48 +162,63 @@ font-size: 1.5em;
     @media (max-width: 700px){
         text-align: center;
         width: 100%;
-    }
+    };
 `;
 const ImgPoster = styled.img`
     max-width: 300px;
 
     @media (max-width: 700px){
         max-width: 200px;
-    }
+    };
 `;
-
 const Form = styled.form`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
     @media (max-width: 700px) {
         width: 100%;
-    }
+    };
 `
 const ButtonDiv = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-evenly;
+    width: 100%;
+    height: 20%;
 `;
 const ButtonAdd = styled.button`
-    width: 200px;
-    height: 50px;
-
+width: 200px;
+height: 50px;
+color: white;
+border: 1px solid #536e94;
+box-shadow: 1px 1px 5px 1px black;
+background-color: #232933;
+border-radius: 2px;
+cursor: pointer;
+&:hover{
+    background-color: #7fa3d4;
+};
     @media (max-width: 700px){
         width: 100%;
-    }
+    };
 `;
 const InDbPara = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border: 2px #016527 solid;
-    width: 200px;
+    border: 1px #485c77 solid;
+    width: 90%;
     height: 50px;
     border-radius: 5px;
-    background-color: #323634;
+    box-shadow: 1px 1px 5px 1px black;
+    background-color: #222831;
 `;
-
 const OverviewPara = styled.p`
     @media (max-width: 700px){
    display: none;
-    }
+    };
 `;
