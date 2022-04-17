@@ -7,7 +7,7 @@ export const Login = ({user, setUser}) =>{
     const [userName, setUsername] = useState();
     const [email, setEmail] = useState();
     const [pass, setPass] = useState();
-    const [bool, setBool] = useState(false)
+    const [bool, setBool] = useState(false);
     
     const submitHandler = (e) => {
         e.preventDefault(); 
@@ -17,14 +17,13 @@ export const Login = ({user, setUser}) =>{
             if (email.includes("@")) {
                 createUser(userName, email, pass, setUser)
             }
-        }
-    }
+        };
+    };
 
     return (
             <PageContainer>
             {user && <Navigate to="/home" />}
             <LoginContainer>
-                {user && <Navigate to="/home" />}
                 <h3>
                     {!bool 
                         ? "Register" 
@@ -52,9 +51,9 @@ export const Login = ({user, setUser}) =>{
             </LoginContainer>
         </PageContainer>
 
-    )
+    );
     
-}
+};
 
 // ##########################################################
 // styled componebts here
@@ -66,7 +65,13 @@ const PageContainer = styled.div`
     height: 100vh;
     justify-content: center;
     align-items: center;
-`
+
+
+    @media (max-width: 700px){
+        justify-content: flex-start;
+
+    };
+`;
 const LoginContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -77,21 +82,23 @@ const LoginContainer = styled.div`
     border-radius: 1vw;
     border: solid 1px;
     background-color: #000000;
-
+   
     @media (max-width: 700px){
-        width: 90vw;
+        width: 320px;
         border-radius: 10px;
-    }
-
-   `
+        min-height: 400px;
+        margin-top: 10px;
+    };
+    `;
     const LogIn = styled.div`
         width: 20vw;
         height: 30vh;
         
     @media (max-width: 700px){
         width: 100%;
-    }
-    `
+        height: 250px;
+    };
+    `;
     const LoginForm = styled.form`
         display: flex;
         flex-direction: column;
@@ -102,8 +109,9 @@ const LoginContainer = styled.div`
 
         @media (max-width: 700px){
         width: 100%;
-    }
-    `
+        height: 250px;
+        };
+    `;
     const LogButton = styled.button`
         width: 14vw;
         height: 4vh;
@@ -115,9 +123,9 @@ const LoginContainer = styled.div`
 
         @media (max-width: 700px){
         width: 80%;
-    }
-        
-    `
+        height: 40px;
+    };
+    `;
     const TextInput = styled.input`
         width: 14vw;
         height: 4vh;
@@ -129,5 +137,6 @@ const LoginContainer = styled.div`
 
         @media (max-width: 700px){
         width: 80%;
-    }
-    `
+        height: 40px;
+    };
+    `;
