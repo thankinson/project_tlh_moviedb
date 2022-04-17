@@ -17,7 +17,8 @@ import styled from "styled-components";
 // images
 import SearchImg from "../assets/searchbar.png"
 import FoundMovie from "../assets/foundmovie.png"
-
+import SearchMob from "../assets/searchbarMobile.png"
+import FoundMob from "../assets/foundmovieMobile.png"
 export const Home = ({user, setUser}) =>{
     useEffect(() => {
         document.title = "HMD | Home";
@@ -35,11 +36,13 @@ export const Home = ({user, setUser}) =>{
                     <h2>Welcome to the Home movie Database</h2>
                 </AboutSiteTitle>
                 <AboutSiteInfo>
-                    <p>The Home Movie Database is designed to be used as your personal movie collection database. </p>
+                    <PTagHiddenMob>The Home Movie Database is designed to be used as your personal movie collection database. </PTagHiddenMob>
                     <p>Search The Movie Database API for a film you want to add to your collection. </p>
                     <ImagesSettings src={SearchImg} alt="search bar " />
+                    <ImagesSettingsMobile src={SearchMob} alt="search bar " />
                     <p>Simply Click on the film you have searched for and click Add and it will be stored in your collection</p>
                     <ImagesSettings src={ FoundMovie } alt="drop down window" />
+                    <ImagesSettingsMobile src={FoundMob} alt="search bar " />
                     <p>To View your movies open the "My Movies" tab and scroll through your films</p>
                 </AboutSiteInfo>
             </AboutContaciner>
@@ -49,7 +52,7 @@ export const Home = ({user, setUser}) =>{
 
     )
 
-}
+};
 
 const PageContainer = styled.div`
     display: flex;
@@ -59,73 +62,51 @@ const PageContainer = styled.div`
 
     @media (max-width: 700px){
         height: 100%;
-    }
-`
+    };
+`;
 const HomeContentDiv = styled.div`
     display: flex;
     flex-direction: column;
     width: 100vw;
     height: 100%;
     align-items: center;
-`
+`;
 const AboutContaciner = styled.div`
     width: 50%;
     height: 100%;
 
     @media (max-width: 700px){
         width: 90%;
-    }
-`
+    };
+`;
 const AboutSiteTitle = styled.div`
     width: 100%;
     text-align: center;
-`
+`;
 const AboutSiteInfo = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    text-align: center;
-    
-`
+    text-align: center; 
+`;
 const ImagesSettings = styled.img`
     max-width: 500px;
 
     @media (max-width: 700px){
-    width: 300px;
-    }
-`
+    display: none;
+    };
+`;
+const ImagesSettingsMobile = styled.img`
+    width: 60%;
 
-// const HyperLink = styled.a`
-//     text-decoration: none;
-//     text-decoration-line: underline;
-//     color: white;
-// `
-
-// <p>Welcome to my Site</p>
-// <p>This site is designed for the purpose of: 
-//     <ul>
-//         <li>To keep track of Films in your DVD/Blu-Ray/Didgital Collection</li>
-//         <li>To add films to your collection</li>
-//         <li>Portfolio project</li>
-//     </ul>
-//      </p>
-//      <p>To build this site i am useing<br />
-//      &nbsp;&nbsp;Frontend: 
-//          <ul>
-//              <li>React</li>
-//              <li>React-Router-Dom</li>
-//              <li>Styled-Componats</li>
-//              <li>The Movie Database API: <HyperLink href="https://developers.themoviedb.org/3/movies/get-movie-details" target="_blank" rel="noreferrer noopener">Click here to visit site</HyperLink></li>
-//          </ul>
-//         &nbsp;&nbsp;Backend:
-//             <ul>
-//                 <li>Express</li>
-//                 <li>Jsonwebtoken</li>
-//                 <li>Bcryptjs</li>
-//                 <li>Dotenv</li>
-//                 <li>Cors</li>
-//                 <li>Mongoose</li>
-//             </ul>
-//      </p>
+    @media (min-width: 700px){
+        display: none;
+    };
+`;
+const PTagHiddenMob = styled.p`
+    @media (max-width: 700px){
+        display: none;
+    };
+`;
