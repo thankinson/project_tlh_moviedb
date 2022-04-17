@@ -21,20 +21,16 @@ const FooterDiv = styled.div`
     bottom: 0;
     height: 5vh;
     width: 100%;
-    
-    /* background-color: rgb(51, 51, 61);
-    box-shadow: 0px 0px 10px 0px white; */
 
-    
   @media (max-width: 700px){
     display: none;
-  }
+  };
 `;
 const HyperLink = styled.a`
     text-decoration: none;
     text-decoration-line: underline;
     color: white;
-`
+`;
 
 
 

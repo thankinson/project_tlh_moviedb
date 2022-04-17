@@ -15,10 +15,10 @@ import { tokenLogin } from "../utils/index";
 import styled from "styled-components";
 
 // images
-import SearchImg from "../assets/searchbar.png"
-import FoundMovie from "../assets/foundmovie.png"
-import SearchMob from "../assets/searchbarMobile.png"
-import FoundMob from "../assets/foundmovieMobile.png"
+import SearchImg from "../assets/searchbar.png";
+import FoundMovie from "../assets/foundmovie.png";
+import SearchMob from "../assets/searchbarMobile.png";
+import FoundMob from "../assets/foundmovieMobile.png";
 export const Home = ({user, setUser}) =>{
     useEffect(() => {
         document.title = "HMD | Home";
