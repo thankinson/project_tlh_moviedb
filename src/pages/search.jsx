@@ -96,23 +96,18 @@ const DivSearch = styled.div`
     height: 100%;
     display: flex;
     flex-direction: column;
-    /* border: solid 1px green; */
 
     @media (max-width: 700px){
         height: 100%;
     }
-
 `;
 const FormSearch = styled.form`
     display: flex;
     flex-direction: column;
     width: 100vw;
-    /* height: 10vh; */
     justify-content: center;
     align-items: center;
     margin-top: 4vh;
-    /* border: solid 1px green; */
-
 `;
 const InputSearch = styled.input`
     width: 39%;
@@ -143,10 +138,9 @@ const ButtonSearch = styled.button`
     &:hover{
         background-color: #495568;
         border: 1px #a4a4a4 solid;
-    }
+    };
 
     @media (max-width: 700px){
-        width: 90vw;
-        height: 5vh;
+      display: none;
     };
 `;
