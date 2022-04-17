@@ -59,16 +59,12 @@ export const Navbar = ({setUser}) => {
                         setShowNav((curr) => !curr)
                         }}
                         >
-                        {/* {showNav ? <> &#9781; </> : <> &#8801; </> } */}
                         <> &#8801; </>
                     </BurgerMenue>
-                    {/* {!showNav && <PageTitle><h3>Home Movie Database</h3></PageTitle>} */}
                     <PageTitle><h3>Home Movie Database</h3></PageTitle>
                     <BurgerMenue></BurgerMenue>
                 </BurgerMenueDiv>
                 
-                
-            
             <NavbarLinks>
              <PageLinks />
 
@@ -88,21 +84,15 @@ const NavbarContainer = styled.nav`
     display: flex;
     flex-direction: row;
     width: 100%;
-    /* height: 5vh; */
     height: ${(props) => (props.showNav ? "35vh" : "5vh")};
-    background-color: #232323;
+    background-color: #222831;
     align-items: center;
 
     @media (max-width: 700px){
         min-height: 50px;
-        /* max-height: 100px; */
         flex-direction: column;
-        /* justify-content: center;
-        align-items: center; */
-        
     }
 `;
-
     const NavbarLinks = styled(NavbarContainer)`
     justify-content: center;
 
@@ -110,22 +100,19 @@ const NavbarContainer = styled.nav`
             display: none;
         }
     `;
-
     const NaveTextContainer = styled.div`
         display: flex;
         width: 10vw;
-        /* height: 4vh; */
         justify-content: center;
         align-items: center;
 
         @media (max-width: 700px){
             display: none;
         }
-
-    `
+    `;
     const StyledNavLink = styled(NavLink)`
         display: flex;
-        width: 9vw;
+        width: 100%;
         height: 5vh;
         justify-content: center;
         align-items: center;
@@ -133,16 +120,17 @@ const NavbarContainer = styled.nav`
         font-family: Arial, Helvetica, sans-serif;
         font-size: 1.25rem;
         color: white;
-        background-color: #393939;
-        border-top:solid 1px #707070;
-        border-left:solid 1px #707070;
-        border-right:solid 1px #707070;
+        background-color: #222831;
         &.active {
             background-color: #131516;
+            &:hover{
+                background-color: #1a1e24;
+            };
         };
-        border-top-left-radius: 1vw;
-        border-top-right-radius: 1vw;
-    `
+        &:hover{
+            background-color:#495568;
+        };
+    `;
         const StyledNavLinkMobile = styled(NavLink)`
             display: flex;
             flex-direction: column;
@@ -156,9 +144,7 @@ const NavbarContainer = styled.nav`
             width: 90%;
             height: 40px;
             margin-bottom: 10px;
-            /* justify-content: center;
-            align-items: center; */
-        `
+        `;
 
     const BurgerMenueDiv = styled.div`
         @media (max-width: 700px){
@@ -168,7 +154,7 @@ const NavbarContainer = styled.nav`
             align-items: flex-start;
             width: 100vw;
         }
-    `
+    `;
     const BurgerMenue = styled.button`
         width: 50px;
         background: none;
@@ -179,9 +165,8 @@ const NavbarContainer = styled.nav`
 
         @media (min-width: 700px){
             display: none;
-        }
-    `
-
+        };
+    `;
     const PageTitle = styled.div`
         display: flex;
         justify-content: center;
@@ -192,8 +177,8 @@ const NavbarContainer = styled.nav`
 
         @media (min-width: 700px){
             display: none;
-        }
-    `
+        };
+    `;
     const NavSmallContainer = styled.div`
         display: flex;
         flex-direction: column;
@@ -203,6 +188,6 @@ const NavbarContainer = styled.nav`
 
         @media (min-width: 700px){
             display: none;
-        }
-    `
+        };
+    `;
 

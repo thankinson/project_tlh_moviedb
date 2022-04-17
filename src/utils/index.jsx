@@ -98,7 +98,7 @@ export const updatePass = async (user, passUpdate) => {
 // movie controlls
 export const addMovie = async (film) => {
     try {
-        const response = await fetch(`${dbConnection}movie`, {
+        await fetch(`${dbConnection}movie`, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
@@ -107,10 +107,10 @@ export const addMovie = async (film) => {
                 poster: film.poster,
             }),
         });
-        const data = await response.JSON()
-        if (!data.msg) {
-            throw new Error(data.err)
-        }
+        // const data = await response.JSON()
+        // if (!data.msg) {
+        //     throw new Error(data.err)
+        // }
     } catch (error) {
         console.log(error);
     }
