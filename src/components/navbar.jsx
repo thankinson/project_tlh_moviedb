@@ -91,8 +91,6 @@ const NavbarContainer = styled.nav`
     @media (max-width: 700px){
         min-height: 50px;
         flex-direction: column;
-
-        
     }
 `;
     const NavbarLinks = styled(NavbarContainer)`

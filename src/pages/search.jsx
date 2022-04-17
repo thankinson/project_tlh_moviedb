@@ -10,9 +10,10 @@ import { Movieresults } from "../components/movieresult";
 // styles
 import styled from "styled-components";
 import "../globalStyles/global.css"
+
+
 const { REACT_APP_API_KEY } = process.env
 const dbConnection = process.env.REACT_APP_REST_API
-
 
 // main code
 export const SearchApi = ({user, setUser}) =>{
@@ -24,12 +25,6 @@ export const SearchApi = ({user, setUser}) =>{
         document.title = "HMD | Search";
       }, []);
     
-    //   if (!user && !localStorage.key("myToken")) {
-    //     <Navigate to="/" />;
-    //   } else if (!user && localStorage.key("myToken")) {
-    //     tokenLogin(setUser);
-    //   }
-
         const MovieApi = async () =>{
             try {     
                 const response = await fetch(`${REACT_APP_API_KEY}${search}`);
@@ -56,15 +51,8 @@ export const SearchApi = ({user, setUser}) =>{
 
         }, []); 
 
-        // const CheckArray = () =>{
-        //     for ( let i = 0; i < checkMovie.length; i++ ){
-        //         setIdArray(idArray => [...idArray, checkMovie[i].tmdbId]);
-        //     };        
-        //     };
-             
         const submitHandler = (e) => {
             e.preventDefault();
-            // CheckArray();
             MovieApi();
             };
 
@@ -77,7 +65,7 @@ export const SearchApi = ({user, setUser}) =>{
         <Navbar setUser={setUser} />
         <DivSearch>
             <FormSearch onSubmit={submitHandler }>
-                <InputSearch placeholder="Search Movie Api" type="search" onChange={(e)=> setSearch(e.target.value)} />
+                <InputSearch placeholder={`Search Movies here `} type="search" onChange={(e)=> setSearch(e.target.value)} />
                 <ButtonSearch>Search DB</ButtonSearch>
             </FormSearch>
             <Movieresults movie={movie} checkMovie={checkMovie} setCheckMovie={setCheckMovie}/* idArray={idArray} setIdArray={setIdArray} */ />
@@ -102,55 +90,57 @@ const PageContainer = styled.div`
     @media (max-width: 700px){
         height: 100%;
     }
-`
-
+`;
 const DivSearch = styled.div`
     width: 100vw;
     height: 100%;
     display: flex;
     flex-direction: column;
-    /* border: solid 1px green; */
 
     @media (max-width: 700px){
         height: 100%;
     }
-
-`
-
+`;
 const FormSearch = styled.form`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 100vw;
-    height: 10vh;
     justify-content: center;
     align-items: center;
     margin-top: 4vh;
-    /* border: solid 1px green; */
-
-`
+`;
 const InputSearch = styled.input`
-    width: 500px;
+    width: 39%;
     height: 50px;
-    border-radius: 10px;
+    border-radius: 3px;
+    border: 1px #5c5c5c solid;
     font-size: 25px;
     text-align: center;
-    background-color:  #202324;
-    color: white;
+    background-color:  #222831;
+    color: #ffffff;
+    margin-bottom: 10px;
 
     @media (max-width: 700px){
-        width: 200px;
-    }
-`
-
+        width: 90vw;
+        height: 5vh;
+    };
+`;
 const ButtonSearch = styled.button`
     width: 200px;
     height: 50px;
-    border-radius: 10px;
+    border-radius: 2px;
     margin-left: 1vw;
-    background-color:  #202324;
+    border: 1px #5c5c5c solid;
+    background-color:  #15191f;
     color: white;
+    cursor: pointer;
+
+    &:hover{
+        background-color: #495568;
+        border: 1px #a4a4a4 solid;
+    };
 
     @media (max-width: 700px){
-        width: 100px;
-    }
-`
+      display: none;
+    };
+`;
