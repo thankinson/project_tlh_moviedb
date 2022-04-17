@@ -28,21 +28,17 @@ const Banner = styled.div`
   align-items: center;
   height: 10vh;
   width: 100vw;
-  /* padding-left: 10px;
-  padding-right: 10px;
-  background-color: goldenrod;
-  box-shadow: 0px 0px 10px 0px white; */
 
   @media (max-width: 700px){
     display: none;
-  }
-`
+  };
+`;
 const TitleDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   width: 80vw;
-`
+`;
 const SpaceDiv = styled.div`
   display: flex;
   flex-direction: column;
@@ -50,5 +46,5 @@ const SpaceDiv = styled.div`
   justify-content: center;
   width: 10vw;
   height: 10vh;
-`
+`;
 

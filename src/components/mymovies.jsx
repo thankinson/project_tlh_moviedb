@@ -4,14 +4,13 @@ import styled from "styled-components";
 const dbConnection = process.env.REACT_APP_REST_API
 
 export const ListAll = () =>{
-    const [list, setList] = useState()
+    const [list, setList] = useState();
     
     useEffect(()=> {
         const listMovie = async () => {
             try {     
                 const response = await fetch(`${dbConnection}movie`);
                 const data = await response.json();
-                console.log(data)
                 setList(data.allMovie)
                 } catch(errorLog){
                     console.log(errorLog)
@@ -26,20 +25,17 @@ export const ListAll = () =>{
         </>
     )
 
-}
+};
 
 const PosterDiv = styled.div`
     display: flex;
     flex-direction: column;
     padding-top: 2vh;
-    /* justify-content: center;
-    align-items: center; */
-`
-
+`;
 const ImgPoster = styled.img`
     max-width: 250px;
 
     @media (max-width: 700px){
         max-width: 125px;
-    }
-`
+    };
+`;

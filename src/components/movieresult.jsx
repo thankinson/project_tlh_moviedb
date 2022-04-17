@@ -1,5 +1,4 @@
 import { React, useState} from "react";
-// import Collapsible from "react-collapsible";
 import Collapse from "react-css-collapse";
 // utils
 import { addMovie } from "../utils";

@@ -9,7 +9,7 @@ import { Movieresults } from "../components/movieresult";
 
 // styles
 import styled from "styled-components";
-import "../globalStyles/global.css"
+import "../globalStyles/global.css";
 
 
 const { REACT_APP_API_KEY } = process.env
@@ -29,7 +29,6 @@ export const SearchApi = ({user, setUser}) =>{
             try {     
                 const response = await fetch(`${REACT_APP_API_KEY}${search}`);
                 const data = await response.json();
-                console.log(data);
                 setMovie(data.results);
                 } catch(errorLog){
                     console.log(errorLog);
@@ -41,7 +40,6 @@ export const SearchApi = ({user, setUser}) =>{
                 try {     
                     const response = await fetch(`${dbConnection}movie`);
                     const data = await response.json();
-                    console.log(data.allMovie);
                     setCheckMovie(data.allMovie);
                     } catch(errorLog){
                         console.log(errorLog);
@@ -68,8 +66,11 @@ export const SearchApi = ({user, setUser}) =>{
                 <InputSearch placeholder={`Search Movies here `} type="search" onChange={(e)=> setSearch(e.target.value)} />
                 <ButtonSearch>Search DB</ButtonSearch>
             </FormSearch>
-            <Movieresults movie={movie} checkMovie={checkMovie} setCheckMovie={setCheckMovie}/* idArray={idArray} setIdArray={setIdArray} */ />
+            
         </DivSearch>
+        <DivSearchResults>
+            <Movieresults movie={movie} checkMovie={checkMovie} setCheckMovie={setCheckMovie} />
+        </DivSearchResults>
         </PageContainer>
         </>
 
@@ -85,21 +86,27 @@ const PageContainer = styled.div`
     flex-direction: column;
     align-items: flex-start;
     width: 100vw;
-    height: 100vh;
-
+    height: 100%;
+    
     @media (max-width: 700px){
         height: 100%;
-    }
+    };
 `;
 const DivSearch = styled.div`
     width: 100vw;
-    height: 100%;
+    height: 160px;
     display: flex;
     flex-direction: column;
 
     @media (max-width: 700px){
-        height: 100%;
-    }
+        height: 90px;
+    };
+`;
+const DivSearchResults = styled.div`
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 `;
 const FormSearch = styled.form`
     display: flex;
@@ -122,24 +129,24 @@ const InputSearch = styled.input`
 
     @media (max-width: 700px){
         width: 90vw;
-        height: 5vh;
+        height: 40px;
     };
-`;
-const ButtonSearch = styled.button`
-width: 200px;
-height: 50px;
-color: white;
-border: 1px solid #536e94;
-box-shadow: 1px 1px 5px 1px black;
-background-color: #232933;;
-border-radius: 2px;
-cursor: pointer;
-&:hover{
-    background-color: #7fa3d4;
-};
+    `;
+    const ButtonSearch = styled.button`
+    width: 200px;
+    height: 50px;
+    color: white;
+    border: 1px solid #536e94;
+    box-shadow: 1px 1px 5px 1px black;
+    background-color: #232933;;
+    border-radius: 2px;
+    cursor: pointer;
+    &:hover{
+        background-color: #7fa3d4;
+    };
 
-    @media (max-width: 700px){
-      display: none;
-    };
-`;
+        @media (max-width: 700px){
+        display: none;
+        };
+    `;
 

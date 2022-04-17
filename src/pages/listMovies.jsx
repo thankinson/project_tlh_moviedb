@@ -41,11 +41,11 @@ const PageContainer = styled.div`
     flex-direction: column;
     width: 100vw;
     height: 100%;
-`
+`;
 const PageContent = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-evenly;
-`
+`;
