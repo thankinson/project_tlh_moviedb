@@ -10,7 +10,7 @@ export const Header =({user})=>{
             <Title>Home Movie Database</Title>
             </TitleDiv>
             {user &&<SpaceDiv>
-                <p>{user} is logged in</p>
+                {/* <p>{user} is logged in</p> */}
             </SpaceDiv>}
           </Banner>
          

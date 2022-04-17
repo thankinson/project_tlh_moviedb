@@ -126,21 +126,20 @@ const InputSearch = styled.input`
     };
 `;
 const ButtonSearch = styled.button`
-    width: 200px;
-    height: 50px;
-    border-radius: 2px;
-    margin-left: 1vw;
-    border: 1px #5c5c5c solid;
-    background-color:  #15191f;
-    color: white;
-    cursor: pointer;
-
-    &:hover{
-        background-color: #495568;
-        border: 1px #a4a4a4 solid;
-    };
+width: 200px;
+height: 50px;
+color: white;
+border: 1px solid #536e94;
+box-shadow: 1px 1px 5px 1px black;
+background-color: #232933;;
+border-radius: 2px;
+cursor: pointer;
+&:hover{
+    background-color: #7fa3d4;
+};
 
     @media (max-width: 700px){
       display: none;
     };
 `;
+
