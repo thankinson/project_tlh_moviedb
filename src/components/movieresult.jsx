@@ -112,7 +112,7 @@ const MovieDropdownButton = styled.button`
         width: 100%;
         padding: 20px;
         font-size: 1em;
-        color: #c8c8c8;
+        color: #ffffff;
         text-align: left;
         border: 0px solid #2e444e;
         border-bottom: 1px solid #223239;       

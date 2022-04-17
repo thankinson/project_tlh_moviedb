@@ -98,7 +98,7 @@ export const updatePass = async (user, passUpdate) => {
 // movie controlls
 export const addMovie = async (film) => {
     try {
-        const response = await fetch(`${dbConnection}movie`, {
+        await fetch(`${dbConnection}movie`, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({

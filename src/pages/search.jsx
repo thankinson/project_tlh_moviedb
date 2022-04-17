@@ -19,17 +19,16 @@ export const SearchApi = ({user, setUser}) =>{
     const [movie, setMovie ] = useState([]);
     const [search, setSearch] = useState();
     const [checkMovie, setCheckMovie] = useState([]);
-    // const [idArray, setIdArray] = useState([])
 
     useEffect(() => {
         document.title = "HMD | Search";
       }, []);
     
-      if (!user && !localStorage.key("myToken")) {
-        <Navigate to="/" />;
-      } else if (!user && localStorage.key("myToken")) {
-        tokenLogin(setUser);
-      }
+    //   if (!user && !localStorage.key("myToken")) {
+    //     <Navigate to="/" />;
+    //   } else if (!user && localStorage.key("myToken")) {
+    //     tokenLogin(setUser);
+    //   }
 
         const MovieApi = async () =>{
             try {     
