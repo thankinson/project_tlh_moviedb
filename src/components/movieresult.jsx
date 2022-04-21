@@ -102,6 +102,9 @@ const MovieList = styled.ul`
     list-style: none;
     padding: 0;
 
+    @media (max-width: 850px){
+        width: 90%;
+    }
     @media (max-width: 700px){
         width: 90%;
     };

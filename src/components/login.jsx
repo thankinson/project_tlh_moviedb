@@ -31,14 +31,13 @@ export const Login = ({user, setUser}) =>{
                     }
                 </h3>               
 
-                <LogIn>
                      <LoginForm onSubmit={ submitHandler }>
                         <TextInput placeholder="Enter User Name" type="text" onChange={(e)=> setUsername(e.target.value) }/>
                         {!bool && <TextInput placeholder="Enter E-mail" type="email" onChange={(e)=> setEmail(e.target.value) } />}
                         <TextInput placeholder="Enter Password" type="password" onChange={(e)=> setPass(e.target.value)}/>
                         <LogButton>{!bool ? "Register" : "Login"}</LogButton>
                     </LoginForm>
-                </LogIn>
+            
 
                     <LogButton onClick={()=> setBool(!bool)}>
                         {!bool 
@@ -47,7 +46,6 @@ export const Login = ({user, setUser}) =>{
                         }
                     </LogButton>
                     
-
             </LoginContainer>
         </PageContainer>
 
@@ -66,7 +64,12 @@ const PageContainer = styled.div`
     justify-content: center;
     align-items: center;
 
-
+    @media (max-width: 1080px){
+        justify-content: center;
+    };
+    @media (max-width: 810px){
+        justify-content: center;
+    };
     @media (max-width: 700px){
         justify-content: flex-start;
 
@@ -82,7 +85,27 @@ const LoginContainer = styled.div`
     border-radius: 1vw;
     border: solid 1px;
     background-color: #000000;
-   
+    
+    @media (max-width: 1100px){
+        width: 320px;
+        border-radius: 10px;
+        min-height: 400px;
+        margin-top: 10px;
+    };
+    @media (max-width: 850px){
+        justify-content: flex-start;
+        width: 320px;
+        border-radius: 10px;
+        height: 450px;
+        margin-top: 10px;
+    };
+    @media (max-width: 810px){
+        justify-content: flex-start;
+        width: 320px;
+        border-radius: 10px;
+        height: 450px;
+        margin-top: 10px;
+    };
     @media (max-width: 700px){
         width: 320px;
         border-radius: 10px;
@@ -90,26 +113,30 @@ const LoginContainer = styled.div`
         margin-top: 10px;
     };
     `;
-    const LogIn = styled.div`
-        width: 20vw;
-        height: 30vh;
-        
-    @media (max-width: 700px){
-        width: 100%;
-        height: 250px;
-    };
-    `;
     const LoginForm = styled.form`
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
         align-items: center;
-        min-width: 20vw;
-        min-height: 30vh;
+        width: 20vw;
+        height: 30vh;
+        border: solid 1px red;
 
+        @media (max-width: 1100px){
+        width: 100%;
+        height: 70%;
+        };
+        @media (max-width: 850px){
+        width: 100%;
+        height: 70%;
+        };
+        @media (max-width: 810px){
+            width: 100%;
+            height: 70%;
+        };
         @media (max-width: 700px){
         width: 100%;
-        height: 250px;
+        height: 70%;
         };
     `;
     const LogButton = styled.button`
@@ -120,7 +147,11 @@ const LoginContainer = styled.div`
         border: solid 1px rgb(58, 58, 58);
         background-color: #131516f6;
         color: aliceblue;
-
+       
+        @media (max-width: 1100px){
+        width: 90%;
+        height: 40px;
+    };
         @media (max-width: 700px){
         width: 80%;
         height: 40px;
@@ -135,6 +166,10 @@ const LoginContainer = styled.div`
         background-color: #131516f6;
         color: aliceblue;
 
+        @media (max-width: 1100px){
+        width: 90%;
+        height: 40px;
+    };
         @media (max-width: 700px){
         width: 80%;
         height: 40px;
