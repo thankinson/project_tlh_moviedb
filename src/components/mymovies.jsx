@@ -34,7 +34,7 @@ const PosterDiv = styled.div`
 `;
 const ImgPoster = styled.img`
     max-width: 250px;
-
+  
     @media (max-width: 700px){
         max-width: 125px;
     };
