@@ -102,10 +102,13 @@ const NavbarContainer = styled.nav`
     `;
     const NaveTextContainer = styled.div`
         display: flex;
-        width: 10vw;
+        width: 120px;
         justify-content: center;
         align-items: center;
 
+        @media (max-width: 970px){
+            width: 120px;
+        }
         @media (max-width: 700px){
             display: none;
         };
