@@ -31,7 +31,6 @@ export const Login = ({user, setUser}) =>{
                     }
                 </h3>               
 
-
                      <LoginForm onSubmit={ submitHandler }>
                         <TextInput placeholder="Enter User Name" type="text" onChange={(e)=> setUsername(e.target.value) }/>
                         {!bool && <TextInput placeholder="Enter E-mail" type="email" onChange={(e)=> setEmail(e.target.value) } />}
@@ -47,7 +46,6 @@ export const Login = ({user, setUser}) =>{
                         }
                     </LogButton>
                     
-
             </LoginContainer>
         </PageContainer>
 
@@ -65,7 +63,6 @@ const PageContainer = styled.div`
     height: 100vh;
     justify-content: center;
     align-items: center;
-
 
     @media (max-width: 1080px){
         justify-content: center;
