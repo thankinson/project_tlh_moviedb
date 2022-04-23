@@ -1,44 +1,36 @@
-import { React, useState} from "react";
+import { React, useState, useEffect} from "react";
 import Collapse from "react-css-collapse";
 // utils
-import { addMovie } from "../utils";
+import { addMovie, MyCollection } from "../utils";
 
 // css
 import styled from "styled-components";
 import "../globalStyles/global.css";
 
-const dbConnection = process.env.REACT_APP_REST_API
-
 export const Movieresults = ({movie, checkMovie, setCheckMovie}) =>{
     const [openItemIndex, setOpenItemIndex] = useState(undefined);
-    const [idArray, setIdArray] = useState([])
+    const [idArray, setIdArray] = useState([]);
+    const [effectUpdate, setEffectUpdate] = useState(0);
  
     const [film, setFilm] = useState({
         id: '',
         title: '',
         poster: ''});
 
-        const MyCollection = async () => {
-            try {     
-                const response = await fetch(`${dbConnection}movie`);
-                const data = await response.json();
-                console.log(data.allMovie);
-                setCheckMovie(data.allMovie);
-                } catch(errorLog){
-                    console.log(errorLog);
-                };       
-            };
+        useEffect(()=>{
+                MyCollection(setCheckMovie={setCheckMovie});
+        },[effectUpdate])
 
         const CheckArray = () =>{
             for ( let i = 0; i < checkMovie.length; i++ ){
                 setIdArray(idArray => [...idArray, checkMovie[i].tmdbId]);
             };        
             };
-        
+          
         const submitHandler =  async (e) => {
             e.preventDefault();
             await addMovie(film)
-            MyCollection()
+            setEffectUpdate(effectUpdate + 1)
         };
 
         function toggle(id) {
