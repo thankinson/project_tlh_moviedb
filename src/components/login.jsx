@@ -120,7 +120,6 @@ const LoginContainer = styled.div`
         align-items: center;
         width: 20vw;
         height: 30vh;
-        border: solid 1px red;
 
         @media (max-width: 1100px){
         width: 100%;
