@@ -1,3 +1,20 @@
+// db connection
+
+
+//
+export const MyCollection = async ({setCheckMovie}) => {
+    try {     
+        const response = await fetch(`${dbConnection}movie`);
+        const data = await response.json();
+        console.log(data.allMovie);
+        console.log("MyCollection in utils")
+        setCheckMovie(data.allMovie);
+        } catch(errorLog){
+            console.log(errorLog);
+        };       
+    };
+
+
 // user controlls
 const dbConnection = process.env.REACT_APP_REST_API
 
@@ -130,16 +147,4 @@ export const listMovie = async () => {
     } catch (error) {
         
     }
-};
-
-export const myCollection = async () => {
-    try {     
-        const response = await fetch(`${dbConnection}movie`);
-        const data = await response.json();
-        console.log(data.allMovie)
-        // setCheckMovie(data.allMovie)
-        } catch(errorLog){
-            console.log(errorLog);
-        }
-
 };

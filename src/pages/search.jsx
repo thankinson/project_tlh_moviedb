@@ -13,7 +13,6 @@ import "../globalStyles/global.css";
 
 
 const { REACT_APP_API_KEY } = process.env
-const dbConnection = process.env.REACT_APP_REST_API
 
 // main code
 export const SearchApi = ({user, setUser}) =>{
@@ -34,20 +33,6 @@ export const SearchApi = ({user, setUser}) =>{
                     console.log(errorLog);
                 }
             };
-
-        useEffect(()=> {
-            const MyCollection = async () => {
-                try {     
-                    const response = await fetch(`${dbConnection}movie`);
-                    const data = await response.json();
-                    setCheckMovie(data.allMovie);
-                    } catch(errorLog){
-                        console.log(errorLog);
-                    };       
-                };
-             MyCollection();
-
-        }, []); 
 
         const submitHandler = (e) => {
             e.preventDefault();
